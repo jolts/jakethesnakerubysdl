@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-require 'lib/game_engine'
+require 'lib/state'
 
 module JakeTheSnake
-  class Menu < GameEngine
+  class Menu < State
     attr_writer :apple_x, :apple_y
     def initialize
       @apple_x = 168

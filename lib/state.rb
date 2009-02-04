@@ -2,8 +2,10 @@
 require 'sdl'
 
 module JakeTheSnake
-  class GameEngine
-    def initialize
+  class State
+    attr_accessor :state
+    def initialize(state)
+      self.state = state
     end
 
     def load_image(filename)
