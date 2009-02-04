@@ -10,9 +10,17 @@ module JakeTheSnake
     end
     
     def key_pressed(key)
+      puts 'in key_pressed()'
       if key == SDL::Key::DOWN
         @apple_y += 64
       end
+      if key == SDL::Key::UP
+        @apple_y -= 64
+      end
+    end
+    
+    def clock_tick
+      puts 'in clock_tick()'
     end
     
     def draw(surface)

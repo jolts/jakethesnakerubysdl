@@ -22,22 +22,25 @@ module JakeTheSnake
 
     def start_game
       SDL.init(SDL::INIT_VIDEO)
-      $terminated = false
+      running = true
 
-      unless $terminated
+      while running
         next_tick = SDL.get_ticks.to_i + @tick_interval.to_i
+        
         while event = SDL::Event.poll
           @state.draw(@screen)
-          if SDL::Event::KeyDown
-            @state.key_pressed(SDL::Key::DOWN)
+          case event
+          when SDL::Event::KeyDown
+            @state.key_pressed(event.sym)
             puts "KeyDown"
           end
+          @state.clock_tick
           @screen.flip          
+
           if (SDL.get_ticks.to_i < next_tick)
             SDL.delay(next_tick - SDL.get_ticks.to_i)
           end
-          sleep 5
-          puts 'in start_game()'
+          puts 'in loop()'
         end
       end
     end
