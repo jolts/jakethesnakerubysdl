@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-require 'lib/state'
+require 'lib/sprite'
 
 module JakeTheSnake
-  class Menu < State
+  class Menu < Sprite
     attr_writer :apple_x, :apple_y
     def initialize
       @apple_x = 168

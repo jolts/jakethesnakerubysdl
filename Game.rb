@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'sdl'
-require 'lib/state'
+require 'lib/sprite'
 require 'lib/menu'
 
 module JakeTheSnake
@@ -13,7 +13,7 @@ module JakeTheSnake
       @full_screen = full_screen
       @random_height = rand(608)
       @random_width = rand(448)
-      @engine = State.new(@state)
+      @sprite = Sprite.new
       @tick_interval = SDL.delay(50)
       @state = Menu.new
       @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)

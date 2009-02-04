@@ -2,7 +2,7 @@
 require 'sdl'
 
 module JakeTheSnake
-  class Sprite
+  class State
     def initialize
     end
 
