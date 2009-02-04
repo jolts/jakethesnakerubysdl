@@ -8,7 +8,6 @@ module JakeTheSnake
     attr_accessor :state
     attr_reader :screen, :height, :width, :full_screen, :random_height, :random_width, :engine
     def initialize(height, width, full_screen)
-      @screen = SDL::Screen.open(width, height, 32, SDL::SWSURFACE)
       @height = height
       @width = width
       @full_screen = full_screen
@@ -16,6 +15,7 @@ module JakeTheSnake
       @random_width = rand(448)
       @engine = GameEngine.new
       @menu = Menu.new
+      @screen = SDL::Screen.open(@width, @height, 32, SDL::SWSURFACE)
       puts 'in initialize()'
     end
 
