@@ -3,7 +3,6 @@ require 'sdl'
 
 module JakeTheSnake
   class Sprite
-    attr_accessor :apple_x, :apple_y
     def initialize
     end
 

@@ -5,8 +5,8 @@ module JakeTheSnake
   class Menu < Sprite
     attr_writer :apple_x, :apple_y
     def initialize
-      @apple_x = 168
-      @apple_y = 176
+      self.apple_x = 168
+      self.apple_y = 176
     end
     
     def key_pressed(key)
