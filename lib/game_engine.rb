@@ -1,15 +1,17 @@
 #!/usr/bin/env ruby
 require 'sdl'
 
-class GameEngine
-  def initialize
-  end
-
-  def load_image(filename)
-    loaded_image = SDL::Surface.load_bmp(filename)
-    if loaded_image
-      optimized_image = loaded_image.display_format
+module JakeTheSnake
+  class GameEngine
+    def initialize
     end
-    optimized_image
+
+    def load_image(filename)
+      loaded_image = SDL::Surface.load_bmp(filename)
+      if loaded_image
+        optimized_image = loaded_image.display_format
+      end
+      optimized_image
+    end
   end
 end
