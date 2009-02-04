@@ -12,10 +12,16 @@ module JakeTheSnake
     def key_pressed(key)
       puts 'in key_pressed()'
       if key == SDL::Key::DOWN
-        @apple_y += 64
+        unless @apple_y >= 368
+          @apple_y += 64
+        end
+        puts @apple_y
       end
       if key == SDL::Key::UP
-        @apple_y -= 64
+        unless @apple_y <= 176
+          @apple_y -= 64
+        end
+        puts @apple_y
       end
     end
     
