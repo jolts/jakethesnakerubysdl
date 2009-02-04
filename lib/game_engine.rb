@@ -2,21 +2,7 @@
 require 'sdl'
 
 class GameEngine
-  def initialize(screen)
-    @@screen = screen
-  end
-
-  def start_game
-    # Initializes the game
-    if SDL.init(SDL::INIT_VIDEO)
-      while event = SDL::Event.poll
-        Menu.new.draw(@@screen)
-      end
-    end
-  end
-  
-  def end_game
-    SDL.quit
+  def initialize
   end
 
   def load_image(filename)
