@@ -8,7 +8,13 @@ module JakeTheSnake
       @apple_x = 168
       @apple_y = 176
     end
-
+    
+    def key_pressed(key)
+      if key == SDL::Key::DOWN
+        @apple_y += 64
+      end
+    end
+    
     def draw(surface)
       puts 'in draw()'
       menu_screen = load_image("./img/background_and_wall_menu.bmp")

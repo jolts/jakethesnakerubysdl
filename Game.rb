@@ -14,18 +14,31 @@ module JakeTheSnake
       @random_height = rand(608)
       @random_width = rand(448)
       @engine = GameEngine.new
-      @menu = Menu.new
+      @tick_interval = SDL.delay(50)
+      @state = Menu.new
       @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
       puts 'in initialize()'
     end
 
     def start_game
       SDL.init(SDL::INIT_VIDEO)
-      while event = SDL::Event.poll
-        @menu.draw(@screen)
-        @screen.flip
-        sleep 20
-        puts 'in start_game()'
+      $terminated = false
+
+      unless $terminated
+        next_tick = SDL.get_ticks.to_i + @tick_interval.to_i
+        while event = SDL::Event.poll
+          @state.draw(@screen)
+          if SDL::Event::KeyDown
+            @state.key_pressed(SDL::Key::DOWN)
+            puts "KeyDown"
+          end
+          @screen.flip          
+          if (SDL.get_ticks.to_i < next_tick)
+            SDL.delay(next_tick - SDL.get_ticks.to_i)
+          end
+          sleep 5
+          puts 'in start_game()'
+        end
       end
     end
 
@@ -33,7 +46,6 @@ module JakeTheSnake
       SDL.quit
     end
   end
-
 
   begin
     Game.new(640, 480, false).start_game
