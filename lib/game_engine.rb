@@ -10,7 +10,7 @@ class GameEngine
     # Initializes the game
     if SDL.init(SDL::INIT_VIDEO)
       while event = SDL::Event.poll
-        @game.state.draw(@game.screen)
+        Menu.new.draw(@@screen)
       end
     end
   end
