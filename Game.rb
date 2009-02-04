@@ -37,6 +37,8 @@ module JakeTheSnake
 
   begin
     Game.new(640, 480, false).start_game
+  rescue Interrupt
+    puts "\nGame stopped. ^C by user?"
   rescue Exception => exp
     puts "Exception: #{exp.message}"
   end
