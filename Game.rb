@@ -15,7 +15,7 @@ module JakeTheSnake
       @random_width = rand(448)
       @engine = GameEngine.new
       @menu = Menu.new
-      @screen = SDL::Screen.open(@width, @height, 32, SDL::SWSURFACE)
+      @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
       puts 'in initialize()'
     end
 
