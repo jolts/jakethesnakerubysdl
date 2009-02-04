@@ -35,5 +35,9 @@ end
 
 begin
   Game.new(640, 480, false).start_game
+rescue Exception => exception
+  puts "Exception: #{exception.message}"
+rescue Interrupt => interrupt
+  puts "Game was interrupted. Pressed ^C?"
 end
 
