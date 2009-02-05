@@ -6,7 +6,7 @@ module JakeTheSnake
   
   
   class Snake < Sprite
-    attr_accessor :snake_part, :snake_body, :rainbow, :parts_to_add
+    attr_accessor :snake_part, :snake_body, :rainbow, :parts_to_add, :direction
 
     def initialize
       @rainbow = false
@@ -17,9 +17,9 @@ module JakeTheSnake
       @head = true
       @parts_to_add = 3
       @snake_body = Array.new
-      @snake_part = Hash.new
-      
+            
       @length.times do
+        @snake_part = Hash.new
         @snake_part[:head] = @head
         @snake_part[:x] = @x
         @snake_part[:y] = @y
@@ -27,9 +27,6 @@ module JakeTheSnake
         @x -= 16
         @head = false
       end
-      puts @snake_part
-      puts @snake_body[0]
-      puts @snake_body
     end
 
     def draw(surface)
@@ -89,7 +86,7 @@ module JakeTheSnake
         @snake_part[:head] = false
         @snake_part[:x] = @snake_body[-1][:x]
         @snake_part[:y] = @snake_body[-1][:y]
-        @snake_body << snake_part
+        @snake_body << @snake_part
       end
     end
 
