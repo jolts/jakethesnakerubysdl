@@ -36,6 +36,7 @@ module JakeTheSnake
       elsif key == SDL::Key::Q
         $game.state = Menu.new
         $stderr.puts Util.new("yellow").colorize("Q_Q")+" pressed."
+        $stderr.puts Util.new("cyan").colorize("Going back to menu")
       end
     end
 
