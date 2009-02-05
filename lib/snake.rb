@@ -17,7 +17,7 @@ module JakeTheSnake
       @head = true
       @parts_to_add = 3
       @snake_body = Array.new
-            
+      
       @length.times do
         @snake_part = Hash.new
         @snake_part[:head] = @head
@@ -47,35 +47,35 @@ module JakeTheSnake
 
       case direction
       when 1
-        i = 0
-        @snake_body.each do |body_part|
-          body_part[:x] = @snake_body[body_part][:x]
-          body_part[:y] = @snake_body[body_part][:y]
-          i += 1
+        i = @snake_body.length - 1
+        @snake_body.reverse_each do |body_part|
+          @snake_body[i][:x] = @snake_body[i-1][:x]
+          @snake_body[i][:y] = @snake_body[i-1][:y]
+          i -= 1
         end
         @snake_body[0][:y] -= 16
       when 2 
-        i = 0
-        @snake_body.each do |body_part|
-          body_part[:x] = @snake_body[i][:x]
-          body_part[:y] = @snake_body[i][:y]
-          i += 1
+        i = @snake_body.length - 1
+        @snake_body.reverse_each do |body_part|
+          @snake_body[i][:x] = @snake_body[i-1][:x]
+          @snake_body[i][:y] = @snake_body[i-1][:y]
+          i -= 1
         end
         @snake_body[0][:x] += 16
       when 3 
-        i = 0
-        @snake_body.each do |body_part|
-          body_part[:x] = @snake_body[i][:x]
-          body_part[:y] = @snake_body[i][:y]
-          i += 1
+        i = @snake_body.length - 1
+        @snake_body.reverse_each do |body_part|
+          @snake_body[i][:x] = @snake_body[i-1][:x]
+          @snake_body[i][:y] = @snake_body[i-1][:y]
+          i -= 1
         end
         @snake_body[0][:y] += 16
       when 4
-        i = 0
-        @snake_body.each do |body_part|
-          body_part[:x] = @snake_body[i][:x]
-          body_part[:y] = @snake_body[i][:y]
-          i += 1
+        i = @snake_body.length - 1
+        @snake_body.reverse_each do |body_part|
+          @snake_body[i][:x] = @snake_body[i-1][:x]
+          @snake_body[i][:y] = @snake_body[i-1][:y]
+          i -= 1
         end
         @snake_body[0][:x] -= 16
       end
