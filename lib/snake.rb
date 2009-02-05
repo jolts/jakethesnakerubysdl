@@ -4,17 +4,6 @@ require 'lib/sprite'
 
 module JakeTheSnake
   
-  class SnakePart
-    #this is a part of a snake
-    attr_accessor :head, :x, :y
-
-    def initalize
-    end
-
-    def -(part)
-      self - part
-    end
-  end
   
   class Snake < Sprite
     attr_accessor :snake_part, :snake_body, :rainbow, :parts_to_add
@@ -28,12 +17,12 @@ module JakeTheSnake
       @head = true
       @parts_to_add = 3
       @snake_body = Array.new
-      @snake_part = SnakePart.new
-
+      @snake_part = Hash.new
+      
       @length.times do
-        @snake_part.head = @head
-        @snake_part.x = @x
-        @snake_part.y = @y
+        @snake_part[:head] = @head
+        @snake_part[:x] = @x
+        @snake_part[:y] = @y
         @snake_body << @snake_part
         @x -= 16
         @head = false
@@ -63,41 +52,40 @@ module JakeTheSnake
       when 1
         i = 1
         @snake_body.each do |body_part|
-          body_part.x = @snake_body[i-1].x
-          body_part.y = @snake_body[i-1].y
+          body_part.x = @snake_body[i-1][:x]
+          body_part.y = @snake_body[i-1][:y]
           i += 1
         end
-        @snake_body[0].y -= 16
+        @snake_body[0][:y] -= 16
       when 2 
         @snake_body.each do |body_part|
-          #body_part.x = @snake_body[i-1].x
-          body_part.y = @snake_body[i-1].y
+          body_part.x = @snake_body[i-1][:x]
+          body_part.y = @snake_body[i-1][:y]
           i += 1
         end
-        @snake_body[0].x += 16
+        @snake_body[0][:x] += 16
       when 3 
         @snake_body.each do |body_part|
-          body_part.x = @snake_body[i-1].x
-          body_part.y = @snake_body[i-1].y
+          body_part.x = @snake_body[i-1][:x]
+          body_part.y = @snake_body[i-1][:y]
           i += 1
         end
-        #@snake_body[0].y += 16
+        #@snake_body[0][:y] += 16
       when 4
         @snake_body.each do |body_part|
-          body_part.x = @snake_body[i-1].x
-          body_part.y = @snake_body[i-1].y
+          body_part.x = @snake_body[i-1][:x]
+          body_part.y = @snake_body[i-1][:y]
           i += 1
         end
-        #@snake_body[0].x -= 16
+        #@snake_body[0][:x] -= 16
       end
     end
 
     def add_parts(parts)
       parts.times do
-        @snake_part = Struct.new(:head,:x,:y)
-        #@snake_part.head = false
-        #@snake_part.x = @snake_body[-1].x
-        #@snake_part.y = @snake_body[-1].y
+        @snake_part[:head] = false
+        @snake_part[:x] = @snake_body[-1][:x]
+        @snake_part[:y] = @snake_body[-1][:y]
         @snake_body << snake_part
       end
     end
