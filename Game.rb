@@ -45,10 +45,6 @@ module JakeTheSnake
         end
       end
     end
-
-    def end_game
-      SDL.quit
-    end
   end
 
   begin
