@@ -13,7 +13,7 @@ module JakeTheSnake
     end
 
     def key_pressed(key)
-      puts 'in Menu.key_pressed()'
+      puts "Currently in: %s" % Colorize.new("red").colorize("Menu.key_pressed()")
       if key == SDL::Key::DOWN
         if @apple_y < 368
           @apple_y += 64
@@ -36,7 +36,7 @@ module JakeTheSnake
     end
 
     def handle_state
-      puts "Currently in: %s" % Colorize.new("red").colorize("handle_state()")
+      puts "Currently in: %s" % Colorize.new("red").colorize("Menu.handle_state()")
       case self.apple_y 
       when 176
         $game.state = NewGame.new
