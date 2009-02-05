@@ -32,7 +32,7 @@ module JakeTheSnake
     end
 
     def clock_tick
-      puts 'in Menu.clock_tick()'
+      puts "Currently in: %s" % Colorize.new("red").colorize("Menu.clock_tick()")
     end
 
     def handle_state
