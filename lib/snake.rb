@@ -18,9 +18,9 @@ module JakeTheSnake
 
       @length.times do
         @snake_part = Struct.new(:head, :x, :y)
-        @snake_part.head = @head
-        @snake_part.x = @x
-        @snake_part.y = @y
+        #        @snake_part.head = @head
+        #       @snake_part.x = @x
+        #        @snake_part.y = @y
         @snake_body << @snake_part
         @x -= 16
         @head = false
