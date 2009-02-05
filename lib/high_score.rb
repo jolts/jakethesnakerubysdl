@@ -7,7 +7,7 @@ module JakeTheSnake
     end
 
     def clock_tick
-      puts "Currently in: %s" % Colorize.new("red").colorize("HighScore.clock_tick()")
+      $stderr.puts "Currently in: %s" % Colorize.new("red").colorize("HighScore.clock_tick()")
     end
   end
 end

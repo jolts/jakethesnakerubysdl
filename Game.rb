@@ -19,7 +19,7 @@ module JakeTheSnake
       @state = Menu.new
       @tick_interval = SDL.delay(50)
       @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
-      puts "Currently in: %s" % Colorize.new("red").colorize("initialize()")
+      $stderr.puts "Currently in: %s" % Colorize.new("red").colorize("initialize()")
     end
 
     def start_game
@@ -40,7 +40,7 @@ module JakeTheSnake
           if SDL.get_ticks.to_i < next_tick
             SDL.delay(next_tick - SDL.get_ticks.to_i)
           end
-          puts "Currently in: %s" % Colorize.new("red").colorize("loop()")
+          $stderr.puts "Currently in: %s" % Colorize.new("red").colorize("loop()")
         end
       end
     end
@@ -50,8 +50,8 @@ module JakeTheSnake
     $game = Game.new(640, 480, false)
     $game.start_game
   rescue Interrupt
-    puts Colorize.new("red").colorize("\nGame stopped. ^C by user?")
+    $stderr.puts Colorize.new("red").colorize("\nGame stopped. ^C by user?")
   rescue Exception => exp
-    puts Colorize.new("red").colorize("Exception:")+" #{exp.message}"
+    $stderr.puts Colorize.new("red").colorize("Exception:")+" #{exp.message}"
   end
 end
