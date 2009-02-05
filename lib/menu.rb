@@ -23,22 +23,24 @@ module JakeTheSnake
         if @apple_y > 176
           @apple_y -= 64
         end
-        puts @apple_y
       end
+      if key == SDL::Key::RETURN
+        handle_state
+      end
+      puts @apple_y
     end
     
     def clock_tick
       puts 'in Menu.clock_tick()'
-      handle_state
     end
 
     def handle_state
       puts "Currently in: %s" % colorize("red", "handle_state()").to_s
       case self.apple_y 
       when 176
-        $state = NewGame.new
+        $game.state = NewGame.new
       when 304
-        $state = HighScore.new
+        $game.state = HighScore.new
       when 368
         SDL.quit
       end

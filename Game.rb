@@ -7,11 +7,9 @@ require 'lib/high_score'
 require 'lib/colorize'
 
 module JakeTheSnake
-
-  $state = Menu.new
-
+  
   class Game
-#    attr_accessor :state
+    attr_accessor :state
     attr_reader :screen, :height, :width, :full_screen, :random_height, :random_width, :engine
     def initialize(height=640, width=480, full_screen=false)
       @height = height
@@ -19,7 +17,7 @@ module JakeTheSnake
       @full_screen = full_screen
       @random_height = rand(608)
       @random_width = rand(448)
-      @sprite = Sprite.new
+      @state = Menu.new
       @tick_interval = SDL.delay(50)
       @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
       puts "Currently in: %s" % colorize("red", "initialize()").to_s
@@ -35,14 +33,11 @@ module JakeTheSnake
         while event = SDL::Event.poll
           case event
           when SDL::Event::KeyDown
-            if event.sym == SDL::Key::RETURN
-              handle_state
-            end
-            $state.key_pressed(event.sym)
+            @state.key_pressed(event.sym)
             puts colorize("yellow", "KeyDown").to_s
           end
-          $state.clock_tick
-          $state.draw(@screen)
+          @state.clock_tick
+          @state.draw(@screen)
           @screen.flip          
 
           if (SDL.get_ticks.to_i < next_tick)
@@ -59,7 +54,8 @@ module JakeTheSnake
   end
 
   begin
-    Game.new(640, 480, false).start_game
+    $game = Game.new(640, 480, false)
+    $game.start_game
   rescue Interrupt
     puts colorize("red", "\nGame stopped. ^C by user?").to_s
   rescue Exception => exp
