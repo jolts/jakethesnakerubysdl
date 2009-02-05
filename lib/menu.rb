@@ -37,9 +37,11 @@ module JakeTheSnake
       when SDL::Key::H
         $stderr.puts Util.new("cyan").colorize("Loading Highscores...")
         $game.state = HighScore.new
-      when SDL::Key::Q or key == SDL::Key::E
+      when SDL::Key::Q
         $stderr.puts Util.new("cyan").colorize("Jake The Snake is exiting...")
         SDL.quit
+      when SDL::Key::E
+        SDL.Quit
       end
     end
 
