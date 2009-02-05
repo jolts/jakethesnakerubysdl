@@ -4,6 +4,7 @@ require 'lib/sprite'
 require 'lib/menu'
 require 'lib/new_game'
 require 'lib/high_score'
+require 'lib/colorize'
 
 module JakeTheSnake
   class Game
@@ -19,7 +20,7 @@ module JakeTheSnake
       @tick_interval = SDL.delay(50)
       @state = Menu.new
       @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
-      puts 'in initialize()'
+      puts "Currently in: %s" % colorize("red", "initialize()").to_s
     end
 
     def start_game
@@ -37,7 +38,7 @@ module JakeTheSnake
               handle_state
             end
             @state.key_pressed(event.sym)
-            puts "KeyDown"
+            puts colorize("yellow", "KeyDown").to_s
           end
           @state.clock_tick
           @screen.flip          
@@ -45,13 +46,13 @@ module JakeTheSnake
           if (SDL.get_ticks.to_i < next_tick)
             SDL.delay(next_tick - SDL.get_ticks.to_i)
           end
-          puts 'in loop()'
+          puts "Currently in: %s" % colorize("red", "loop()").to_s
         end
       end
     end
 
     def handle_state
-      puts 'in handle_state()'
+      puts "Currently in: %s" % colorize("red", "handle_state()").to_s
       case @state.apple_y 
       when 176
         self.state = NewGame.new
@@ -70,8 +71,8 @@ module JakeTheSnake
   begin
     Game.new(640, 480, false).start_game
   rescue Interrupt
-    puts "\nGame stopped. ^C by user?"
+    puts colorize("red", "\nGame stopped. ^C by user?").to_s
   rescue Exception => exp
-    puts "Exception: #{exp.message}"
+    puts colorize("red", "Exception:").to_s+" #{exp.message}"
   end
 end
