@@ -38,7 +38,7 @@ module JakeTheSnake
 
       if @snake.parts_to_add
         @snake.add_parts(1)
-        @snake.parts_toadd -= 1
+        @snake.parts_to_add -= 1
       end
     end
 

@@ -18,7 +18,7 @@ module JakeTheSnake
       @random_width = rand(448)
       @sprite = Sprite.new
       @tick_interval = SDL.delay(50)
-      @state = Menu.new
+      @@state = Menu.new
       @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
       puts "Currently in: %s" % colorize("red", "initialize()").to_s
     end
@@ -31,16 +31,16 @@ module JakeTheSnake
         next_tick = SDL.get_ticks.to_i + @tick_interval.to_i
         
         while event = SDL::Event.poll
-          @state.draw(@screen)
           case event
           when SDL::Event::KeyDown
             if event.sym == SDL::Key::RETURN
               handle_state
             end
-            @state.key_pressed(event.sym)
+            @@state.key_pressed(event.sym)
             puts colorize("yellow", "KeyDown").to_s
           end
-          @state.clock_tick
+          @@state.clock_tick
+          @@state.draw(@screen)
           @screen.flip          
 
           if (SDL.get_ticks.to_i < next_tick)
@@ -48,18 +48,6 @@ module JakeTheSnake
           end
           puts "Currently in: %s" % colorize("red", "loop()").to_s
         end
-      end
-    end
-
-    def handle_state
-      puts "Currently in: %s" % colorize("red", "handle_state()").to_s
-      case @state.apple_y 
-      when 176
-        @state = NewGame.new
-      when 304
-        @state = HighScore.new
-      when 368
-        SDL.quit
       end
     end
 

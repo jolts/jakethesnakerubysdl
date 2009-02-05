@@ -27,6 +27,19 @@ module JakeTheSnake
     
     def clock_tick
       puts 'in Menu.clock_tick()'
+      handle_state
+    end
+
+    def handle_state
+      puts "Currently in: %s" % colorize("red", "handle_state()").to_s
+      case self.apple_y 
+      when 176
+        Game.new.state = NewGame.new
+      when 304
+        Game.new.state = HighScore.new
+      when 368
+        SDL.quit
+      end
     end
     
     def draw(surface)
