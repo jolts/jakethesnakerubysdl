@@ -17,11 +17,11 @@ module JakeTheSnake
       @snake_body = Array.new
 
       @length.times do
-        snake_part = Struct.new
-        snake_part.head = @head
-        snake_part.x = @x
-        snake_part.y = @y
-        @snake_body << snake_part
+        SnakePart = Struct.new(:head,:x,:y)
+        SnakePart.head = @head
+        SnakePart.x = @x
+        SnakePart.y = @y
+        @snake_body << SnakePart
         @x -= 16
         @head = false
       end
