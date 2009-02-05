@@ -34,14 +34,14 @@ module JakeTheSnake
 
     def draw(surface)
       @snake_body.each do |body_part|
-        if body_part
+        if body_part[:head]
           snake_surface = load_image("./img/player1_head.bmp")
         elsif @rainbow
           snake_surface = load_image("./img/player_rainbow.bmp")
         else
           snake_surface = load_image("./img/player_body.bmp")
         end
-        SDL::Surface.blit(snake_surface, 0, 0, 0, 0, surface, 0, 0)
+        SDL::Surface.blit(snake_surface, 0, 0, 0, 0, surface, body_part[:x], body_part[:y])
       end
     end
 
