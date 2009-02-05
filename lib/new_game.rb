@@ -2,6 +2,7 @@
 require 'lib/sprite'
 require 'lib/snake'
 require 'lib/high_score'
+require 'lib/colorize'
 
 module JakeTheSnake
   class NewGame < Sprite
@@ -11,7 +12,7 @@ module JakeTheSnake
     end
 
     def key_pressed(key)
-      puts 'in NewGame.key_pressed()'
+      puts "Currently in: %s" % Colorize.new("red").colorize("NewGame.key_pressed()")
       if key == SDL::Key::UP
         if @snake.direction != 3
           @snake.direction = 1

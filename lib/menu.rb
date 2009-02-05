@@ -2,6 +2,7 @@
 require 'lib/sprite'
 require 'lib/new_game'
 require 'lib/high_score'
+require 'lib/colorize'
 
 module JakeTheSnake
   class Menu < Sprite
@@ -10,7 +11,7 @@ module JakeTheSnake
       self.apple_x = 168
       self.apple_y = 176
     end
-    
+
     def key_pressed(key)
       puts 'in Menu.key_pressed()'
       if key == SDL::Key::DOWN
@@ -29,13 +30,13 @@ module JakeTheSnake
       end
       puts @apple_y
     end
-    
+
     def clock_tick
       puts 'in Menu.clock_tick()'
     end
 
     def handle_state
-      puts "Currently in: %s" % colorize("red", "handle_state()").to_s
+      puts "Currently in: %s" % Colorize.new("red").colorize("handle_state()")
       case self.apple_y 
       when 176
         $game.state = NewGame.new
@@ -45,7 +46,7 @@ module JakeTheSnake
         SDL.quit
       end
     end
-    
+
     def draw(surface)
       puts 'in Menu.draw()'
       menu_screen = load_image("./img/background_and_wall_menu.bmp")

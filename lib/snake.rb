@@ -44,7 +44,7 @@ module JakeTheSnake
   def move(direction) 
     self.direction = direction
     case direction
-      
+
     when 1
       i = 1
       @snake_body.each { |body_part|

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require 'lib/colorize'
 
 module JakeTheSnake
   class HighScore
@@ -6,7 +7,7 @@ module JakeTheSnake
     end
 
     def clock_tick
-      puts "in HighScore.clock_tick()"
+      puts "Currently in: %s" % Colorize.new("red").colorize("HighScore.clock_tick()")
     end
   end
 end
