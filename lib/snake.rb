@@ -73,7 +73,7 @@ module JakeTheSnake
       when 4
         i = @snake_body.length - 1
         @snake_body.reverse_each do 
-          _body[i][:x] = @snake_body[i-1][:x]
+          @snake_body[i][:x] = @snake_body[i-1][:x]
           @snake_body[i][:y] = @snake_body[i-1][:y]
           i -= 1
         end

@@ -44,7 +44,7 @@ module JakeTheSnake
       @snake.move(@snake.direction)
       check_collisions
 
-      if @snake.parts_to_add
+      if @snake.parts_to_add != 0
         @snake.add_parts(1)
         @snake.parts_to_add -= 1
       end
@@ -63,7 +63,7 @@ module JakeTheSnake
       if finished
         SDL.delay(2000)
         high_score(@p1points)
-        $state = HighScore.new
+        $game.state = HighScore.new
       end
     end
   end
