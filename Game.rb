@@ -7,10 +7,13 @@ require 'lib/high_score'
 require 'lib/colorize'
 
 module JakeTheSnake
+
+  $state = Menu.new
+
   class Game
-    attr_accessor :state
+#    attr_accessor :state
     attr_reader :screen, :height, :width, :full_screen, :random_height, :random_width, :engine
-    def initialize(height, width, full_screen)
+    def initialize(height=640, width=480, full_screen=false)
       @height = height
       @width = width
       @full_screen = full_screen
@@ -18,7 +21,6 @@ module JakeTheSnake
       @random_width = rand(448)
       @sprite = Sprite.new
       @tick_interval = SDL.delay(50)
-      @@state = Menu.new
       @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
       puts "Currently in: %s" % colorize("red", "initialize()").to_s
     end
@@ -36,11 +38,11 @@ module JakeTheSnake
             if event.sym == SDL::Key::RETURN
               handle_state
             end
-            @@state.key_pressed(event.sym)
+            $state.key_pressed(event.sym)
             puts colorize("yellow", "KeyDown").to_s
           end
-          @@state.clock_tick
-          @@state.draw(@screen)
+          $state.clock_tick
+          $state.draw(@screen)
           @screen.flip          
 
           if (SDL.get_ticks.to_i < next_tick)

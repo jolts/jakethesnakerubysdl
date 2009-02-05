@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 require 'lib/sprite'
+require 'lib/new_game'
+require 'lib/high_score'
 
 module JakeTheSnake
   class Menu < Sprite
@@ -34,9 +36,9 @@ module JakeTheSnake
       puts "Currently in: %s" % colorize("red", "handle_state()").to_s
       case self.apple_y 
       when 176
-        Game.new.state = NewGame.new
+        $state = NewGame.new
       when 304
-        Game.new.state = HighScore.new
+        $state = HighScore.new
       when 368
         SDL.quit
       end

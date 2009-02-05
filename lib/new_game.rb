@@ -2,7 +2,6 @@
 require 'lib/sprite'
 require 'lib/snake'
 require 'lib/high_score'
-require 'Game'
 
 module JakeTheSnake
   class NewGame < Sprite
@@ -56,7 +55,7 @@ module JakeTheSnake
       if finished
         SDL.delay(2000)
         high_score(@p1points)
-        @game.state = HighScore.new
+        $state = HighScore.new
       end
     end
   end
