@@ -43,7 +43,7 @@ module JakeTheSnake
     end
 
     def check_collisions
-      puts "in NewGame.check_collisions()"
+      puts "Currently in: %s" % Colorize.new("red").colorize("NewGame.check_collisions()")
     end
     
     def draw(surface)
