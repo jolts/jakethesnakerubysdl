@@ -17,7 +17,8 @@ module JakeTheSnake
         "yellow" => "\033[1;33m",
         "default" => "\033[0m"
       }
-      
+      $colors.default = "default"
+
       return $colors[@@color]+text+$colors["default"]
     end
   end
