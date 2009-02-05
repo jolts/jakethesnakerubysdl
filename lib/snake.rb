@@ -3,11 +3,7 @@ require 'sdl'
 require 'lib/sprite'
 
 module JakeTheSnake
-
-  class SnakePart
-    attr_accessor :head, :x, :y
-  end
-
+  
   class Snake < Sprite
     attr_accessor :snake_part, :snake_body, :rainbow, :parts_to_add
 
@@ -20,7 +16,7 @@ module JakeTheSnake
       @head = false
       @parts_to_add = 3
       @snake_body = Array.new
-      @snake_part = SnakePart.new
+      @snake_part = Struct.new(:head, :x, :y)
 
       @length.times do
         @snake_part.head = @head
