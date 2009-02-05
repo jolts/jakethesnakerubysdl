@@ -55,9 +55,9 @@ module JakeTheSnake
       puts "Currently in: %s" % colorize("red", "handle_state()").to_s
       case @state.apple_y 
       when 176
-        self.state = NewGame.new
+        @state = NewGame.new
       when 304
-        self.state = HighScore.new
+        @state = HighScore.new
       when 368
         SDL.quit
       end

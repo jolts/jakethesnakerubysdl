@@ -4,7 +4,7 @@ require 'lib/sprite'
 
 module JakeTheSnake
   class Snake < Sprite
-    attr_accessor :snake_part, :snake_body, :rainbow
+    attr_accessor :snake_part, :snake_body, :rainbow, :parts_to_add
 
     def initialize
       @rainbow = false
@@ -13,9 +13,10 @@ module JakeTheSnake
       @x = 128
       @y = 160
       @head = true
+      @parts_to_add = 3
       @snake_body = Array.new
 
-      @length.each {
+      @length.times {
         snake_part = Struct.new
         snake_part.head = @head
         snake_part.x = @x

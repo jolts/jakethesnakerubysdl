@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require 'lib/sprite'
 require 'lib/snake'
+require 'lib/high_score'
+require 'Game'
 
 module JakeTheSnake
   class NewGame < Sprite
@@ -47,8 +49,15 @@ module JakeTheSnake
     def draw(surface)
       green_background = SDL::Surface.new
       green_background.PixelFormat
-      green_background.mapRGB(0x61,0xAD,0x2F)
-      green_background.fillRect(0, 0, 608, 448)
-
-
+      color = green_background.mapRGB(0x61,0xAD,0x2F)
+      green_background.fillRect(0, 0, 608, 448, color)
+      @snake.draw(surface)
+      
+      if finished
+        SDL.delay(2000)
+        high_score(@p1points)
+        @game.state = HighScore.new
+      end
+    end
   end
+end
