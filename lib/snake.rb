@@ -72,7 +72,7 @@ module JakeTheSnake
           body_part[:y] = @snake_body[i-1][:y]
           i += 1
         end
-        #@snake_body[0][:y] += 16
+        @snake_body[0][:y] += 16
       when 4
         i = 1
         @snake_body.each do |body_part|
@@ -80,7 +80,7 @@ module JakeTheSnake
           body_part[:y] = @snake_body[i-1][:y]
           i += 1
         end
-        #@snake_body[0][:x] -= 16
+        @snake_body[0][:x] -= 16
       end
     end
 
