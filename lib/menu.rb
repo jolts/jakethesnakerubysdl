@@ -3,7 +3,7 @@ require 'lib/sprite'
 
 module JakeTheSnake
   class Menu < Sprite
-    attr_writer :apple_x, :apple_y
+    attr_accessor :apple_x, :apple_y
     def initialize
       self.apple_x = 168
       self.apple_y = 176

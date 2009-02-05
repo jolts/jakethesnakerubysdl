@@ -2,6 +2,8 @@
 require 'sdl'
 require 'lib/sprite'
 require 'lib/menu'
+require 'lib/new_game'
+require 'lib/high_score'
 
 module JakeTheSnake
   class Game
@@ -31,6 +33,9 @@ module JakeTheSnake
           @state.draw(@screen)
           case event
           when SDL::Event::KeyDown
+            if event.sym == SDL::Key::RETURN
+              handle_state
+            end
             @state.key_pressed(event.sym)
             puts "KeyDown"
           end
@@ -42,6 +47,18 @@ module JakeTheSnake
           end
           puts 'in loop()'
         end
+      end
+    end
+
+    def handle_state
+      puts 'in handle_state()'
+      case @state.apple_y 
+      when 176
+        self.state = NewGame.new
+      when 304
+        self.state = HighScore.new
+      when 368
+        SDL.quit
       end
     end
 
