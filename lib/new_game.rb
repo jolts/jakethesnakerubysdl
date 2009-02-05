@@ -47,11 +47,10 @@ module JakeTheSnake
     end
     
     def draw(surface)
-      green_background = SDL::Surface.new
-      green_background.PixelFormat
-      color = green_background.mapRGB(0x61,0xAD,0x2F)
-      green_background.fillRect(0, 0, 608, 448, color)
+      green_background = load_image("./img/bg.bmp")
+      SDL::Surface.blit(green_background, 0, 0, 0, 0, surface, 0, 0)
       @snake.draw(surface)
+      finished = false
       
       if finished
         SDL.delay(2000)

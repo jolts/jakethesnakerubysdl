@@ -5,7 +5,6 @@ module JakeTheSnake
   class Sprite
     attr_accessor :apple_x, :apple_y, :choice, :direction 
     def initialize
-      
     end
 
     def load_image(filename)
@@ -23,3 +22,4 @@ module JakeTheSnake
     end
   end
 end
+
