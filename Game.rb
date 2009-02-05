@@ -38,7 +38,7 @@ module JakeTheSnake
           @state.draw(@screen)
           @screen.flip          
 
-          if (SDL.get_ticks.to_i < next_tick)
+          if SDL.get_ticks.to_i < next_tick
             SDL.delay(next_tick - SDL.get_ticks.to_i)
           end
           puts "Currently in: %s" % Colorize.new("red").colorize("loop()")
