@@ -40,8 +40,10 @@ module JakeTheSnake
       puts "Currently in: %s" % Colorize.new("red").colorize("Menu.handle_state()")
       case self.apple_y 
       when 176
+        puts Colorize.new("cyan").colorize("Starting New Game...")
         $game.state = NewGame.new
       when 304
+        puts Colorize.new("cyan").colorize("Loading Highscores...")
         $game.state = HighScore.new
       when 368
         puts Colorize.new("cyan").colorize("Jake The Snake is exiting...")
