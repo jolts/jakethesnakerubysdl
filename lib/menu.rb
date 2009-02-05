@@ -18,17 +18,18 @@ module JakeTheSnake
         if @apple_y < 368
           @apple_y += 64
         end
-        puts @apple_y
+        puts Colorize.new("yellow").colorize("KeyDown")+" pressed. Location: "+Colorize.new("blue").colorize(@apple_y.to_s)
       end
       if key == SDL::Key::UP
         if @apple_y > 176
           @apple_y -= 64
         end
+        puts Colorize.new("yellow").colorize("KeyUp")+" pressed. Location: "+Colorize.new("blue").colorize(@apple_y.to_s)
       end
       if key == SDL::Key::RETURN
         handle_state
+        puts Colorize.new("yellow").colorize("Return")+" pressed. Location: "+Colorize.new("blue").colorize(@apple_y.to_s)
       end
-      puts @apple_y
     end
 
     def clock_tick

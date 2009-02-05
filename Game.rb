@@ -33,7 +33,6 @@ module JakeTheSnake
           case event
           when SDL::Event::KeyDown
             @state.key_pressed(event.sym)
-            puts Colorize.new("yellow").colorize("KeyDown")
           end
           @state.clock_tick
           @state.draw(@screen)
