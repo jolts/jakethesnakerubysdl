@@ -1,11 +1,11 @@
 module JakeTheSnake
-  class Colorize
+  class Util
     attr_reader :color
-    
+
     def initialize(color="default")
       @@color = color
     end
-    
+
     def colorize(text)
       # Colors
       $black        = "\033[0;30m"
@@ -18,7 +18,7 @@ module JakeTheSnake
       $yellow       = "\033[1;33m"
       $white        = "\033[1;37m"
       $default      = "\033[0m"
-   
+
       case @@color
       when "black"
         my_color = $black
@@ -41,7 +41,7 @@ module JakeTheSnake
       when "default"
         my_color = $default
       end
-    
+
       return my_color+text+$default
     end
   end

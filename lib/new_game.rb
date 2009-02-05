@@ -2,7 +2,7 @@
 require 'lib/sprite'
 require 'lib/snake'
 require 'lib/high_score'
-require 'lib/colorize'
+require 'lib/util'
 
 module JakeTheSnake
   class NewGame < Sprite
@@ -12,7 +12,7 @@ module JakeTheSnake
     end
 
     def key_pressed(key)
-      $stderr.puts "Currently in: %s" % Colorize.new("red").colorize("NewGame.key_pressed()")
+      $stderr.puts "Currently in: %s" % Util.new("red").colorize("NewGame.key_pressed()")
       if key == SDL::Key::UP
         if @snake.direction != 3
           @snake.direction = 1
@@ -43,7 +43,7 @@ module JakeTheSnake
     end
 
     def check_collisions
-      $stderr.puts "Currently in: %s" % Colorize.new("red").colorize("NewGame.check_collisions()")
+      $stderr.puts "Currently in: %s" % Util.new("red").colorize("NewGame.check_collisions()")
     end
     
     def draw(surface)

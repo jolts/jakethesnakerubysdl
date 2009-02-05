@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'lib/colorize'
+require 'lib/util'
 
 module JakeTheSnake
   class HighScore
@@ -7,7 +7,7 @@ module JakeTheSnake
     end
 
     def clock_tick
-      $stderr.puts "Currently in: %s" % Colorize.new("red").colorize("HighScore.clock_tick()")
+      $stderr.puts "Currently in: %s" % Util.new("red").colorize("HighScore.clock_tick()")
     end
   end
 end

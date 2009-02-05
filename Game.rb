@@ -4,7 +4,7 @@ require 'lib/sprite'
 require 'lib/menu'
 require 'lib/new_game'
 require 'lib/high_score'
-require 'lib/colorize'
+require 'lib/util'
 
 module JakeTheSnake
   class Game
@@ -19,7 +19,7 @@ module JakeTheSnake
       @state = Menu.new
       @tick_interval = SDL.delay(50)
       @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
-      $stderr.puts "Currently in: %s" % Colorize.new("red").colorize("initialize()")
+      $stderr.puts "Currently in: %s" % Util.new("red").colorize("initialize()")
     end
 
     def start_game
@@ -40,7 +40,7 @@ module JakeTheSnake
           if SDL.get_ticks.to_i < next_tick
             SDL.delay(next_tick - SDL.get_ticks.to_i)
           end
-          $stderr.puts "Currently in: %s" % Colorize.new("red").colorize("loop()")
+          $stderr.puts "Currently in: %s" % Util.new("red").colorize("loop()")
         end
       end
     end
@@ -50,11 +50,11 @@ module JakeTheSnake
     $game = Game.new(640, 480, false)
     $game.start_game
   rescue Interrupt
-    $stderr.puts Colorize.new("red").colorize("\nGame stopped. ^C by user?")
+    $stderr.puts Util.new("red").colorize("\nGame stopped. ^C by user?")
   rescue Exception => exp
-    $stderr.puts Colorize.new("red").colorize("Exception:")+" #{exp.message}"
+    $stderr.puts Util.new("red").colorize("Exception:")+" #{exp.message}"
   ensure
     # Stuff that must be executed regardless of errors
-    $stderr.puts "\n> Jake was last run at %s" % Colorize.new("cyan").colorize(Time.now.strftime("%d %b %Y :: %T").to_s)
+    $stderr.puts "\n> Jake was last run at %s" % Util.new("cyan").colorize(Time.now.strftime("%d %b %Y :: %T").to_s)
   end
 end
