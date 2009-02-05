@@ -42,6 +42,10 @@ module JakeTheSnake
       when 176
         puts Colorize.new("cyan").colorize("Starting New Game...")
         $game.state = NewGame.new
+      when 240
+        puts Colorize.new("cyan").colorize("Starting New Multiplayer Game...")
+        # TODO
+        $game.state = MultiPlayer.new
       when 304
         puts Colorize.new("cyan").colorize("Loading Highscores...")
         $game.state = HighScore.new
