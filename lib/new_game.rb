@@ -13,27 +13,28 @@ module JakeTheSnake
 
     def key_pressed(key)
       $stderr.puts "Currently in: %s" % Util.new("red").colorize("NewGame.key_pressed()")
-      if key == SDL::Key::UP
+      case key
+      when SDL::Key::UP
         if @snake.direction != 3
           @snake.direction = 1
           $stderr.puts Util.new("yellow").colorize("KeyUp")+" pressed."
         end
-      elsif key == SDL::Key::RIGHT
+      when SDL::Key::RIGHT
         if @snake.direction != 4
           @snake.direction = 2
           $stderr.puts Util.new("yellow").colorize("KeyRight")+" pressed."
         end
-      elsif key == SDL::Key::DOWN
+      when SDL::Key::DOWN
         if @snake.direction != 1
           @snake.direction = 3
           $stderr.puts Util.new("yellow").colorize("KeyDown")+" pressed."
         end
-      elsif key == SDL::Key::LEFT
+      when SDL::Key::LEFT
         if @snake.direction != 2
           @snake.direction = 4
           $stderr.puts Util.new("yellow").colorize("KeyLeft")+" pressed."
         end
-      elsif key == SDL::Key::Q
+      when SDL::Key::Q
         $game.state = Menu.new
         $stderr.puts Util.new("yellow").colorize("Q_Q")+" pressed."
       end
@@ -44,7 +45,7 @@ module JakeTheSnake
       check_collisions
 
       if @snake.parts_to_add
-        @snake.add_parts(3)
+        @snake.add_parts(1)
         @snake.parts_to_add -= 1
       end
     end

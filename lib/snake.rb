@@ -48,7 +48,7 @@ module JakeTheSnake
       case direction
       when 1
         i = @snake_body.length - 1
-        @snake_body.reverse_each do |body_part|
+        @snake_body.reverse_each do
           @snake_body[i][:x] = @snake_body[i-1][:x]
           @snake_body[i][:y] = @snake_body[i-1][:y]
           i -= 1
@@ -56,7 +56,7 @@ module JakeTheSnake
         @snake_body[0][:y] -= 16
       when 2 
         i = @snake_body.length - 1
-        @snake_body.reverse_each do |body_part|
+        @snake_body.reverse_each do
           @snake_body[i][:x] = @snake_body[i-1][:x]
           @snake_body[i][:y] = @snake_body[i-1][:y]
           i -= 1
@@ -64,7 +64,7 @@ module JakeTheSnake
         @snake_body[0][:x] += 16
       when 3 
         i = @snake_body.length - 1
-        @snake_body.reverse_each do |body_part|
+        @snake_body.reverse_each do
           @snake_body[i][:x] = @snake_body[i-1][:x]
           @snake_body[i][:y] = @snake_body[i-1][:y]
           i -= 1
@@ -72,8 +72,8 @@ module JakeTheSnake
         @snake_body[0][:y] += 16
       when 4
         i = @snake_body.length - 1
-        @snake_body.reverse_each do |body_part|
-          @snake_body[i][:x] = @snake_body[i-1][:x]
+        @snake_body.reverse_each do 
+          _body[i][:x] = @snake_body[i-1][:x]
           @snake_body[i][:y] = @snake_body[i-1][:y]
           i -= 1
         end
@@ -83,6 +83,7 @@ module JakeTheSnake
 
     def add_parts(parts)
       parts.times do
+
         @snake_part[:head] = false
         @snake_part[:x] = @snake_body[-1][:x]
         @snake_part[:y] = @snake_body[-1][:y]
