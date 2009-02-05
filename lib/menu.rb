@@ -19,16 +19,26 @@ module JakeTheSnake
           @apple_y += 64
         end
         $stderr.puts Util.new("yellow").colorize("KeyDown")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
-      end
-      if key == SDL::Key::UP
+      elsif key == SDL::Key::UP
         if @apple_y > 176
           @apple_y -= 64
         end
         $stderr.puts Util.new("yellow").colorize("KeyUp")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
-      end
-      if key == SDL::Key::RETURN
+      elsif key == SDL::Key::RETURN
         handle_state
         $stderr.puts Util.new("yellow").colorize("Return")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
+      elsif key == SDL::Key::S
+        $stderr.puts Util.new("cyan").colorize("Starting New Singleplayer Game...")
+        $game.state = NewGame.new
+      elsif key == SDL::Key::M
+        $stderr.puts Util.new("cyan").colorize("Starting New Multiplayer Game...")
+        $game.state = MultiPlayer.new
+      elsif key == SDL::Key::H
+        $stderr.puts Util.new("cyan").colorize("Loading Highscores...")
+        $game.state = HighScore.new
+      elsif key == SDL::Key::Q or key == SDL::Key::E
+        $stderr.puts Util.new("cyan").colorize("Jake The Snake is exiting...")
+        SDL.quit
       end
     end
 
