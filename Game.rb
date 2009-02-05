@@ -53,5 +53,8 @@ module JakeTheSnake
     $stderr.puts Colorize.new("red").colorize("\nGame stopped. ^C by user?")
   rescue Exception => exp
     $stderr.puts Colorize.new("red").colorize("Exception:")+" #{exp.message}"
+  ensure
+    # Stuff that must be executed regardless of errors
+    $stderr.puts "\n> Jake was last run at %s" % Colorize.new("cyan").colorize(Time.now.strftime("%d %b %Y :: %T").to_s)
   end
 end
