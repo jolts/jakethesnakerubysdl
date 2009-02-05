@@ -2,13 +2,12 @@ module JakeTheSnake
   class Colorize
     attr_reader :color
     
-    def initialize(color)
+    def initialize(color="default")
       @@color = color
     end
     
     def colorize(text)
       # Colors
-      $none         = ""
       $black        = "\033[0;30m"
       $red          = "\033[0;31m"
       $green        = "\033[0;32m"
@@ -35,10 +34,12 @@ module JakeTheSnake
         my_color = $purple
       when "cyan"
         my_color = $cyan
-      when "white"
-        my_color = $white
       when "yellow"
         my_color = $yellow
+      when "white"
+        my_color = $white
+      when "default"
+        my_color = $default
       end
     
       return my_color+text+$default
