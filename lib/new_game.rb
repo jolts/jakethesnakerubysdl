@@ -15,22 +15,22 @@ module JakeTheSnake
       $stderr.puts "Currently in: %s" % Util.new("red").colorize("NewGame.key_pressed()")
       case key
       when SDL::Key::UP
-        if @snake.direction != 3
+        unless @snake.direction = 3
           @snake.direction = 1
           $stderr.puts Util.new("yellow").colorize("KeyUp")+" pressed."
         end
       when SDL::Key::RIGHT
-        if @snake.direction != 4
+        unless @snake.direction = 4
           @snake.direction = 2
           $stderr.puts Util.new("yellow").colorize("KeyRight")+" pressed."
         end
       when SDL::Key::DOWN
-        if @snake.direction != 1
+        unless @snake.direction = 1
           @snake.direction = 3
           $stderr.puts Util.new("yellow").colorize("KeyDown")+" pressed."
         end
       when SDL::Key::LEFT
-        if @snake.direction != 2
+        unless @snake.direction = 2
           @snake.direction = 4
           $stderr.puts Util.new("yellow").colorize("KeyLeft")+" pressed."
         end
@@ -44,7 +44,7 @@ module JakeTheSnake
       @snake.move(@snake.direction)
       check_collisions
 
-      if @snake.parts_to_add != 0
+      if @snake.parts_to_add
         @snake.add_parts(1)
         @snake.parts_to_add -= 1
       end
