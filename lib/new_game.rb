@@ -2,8 +2,8 @@
 require 'lib/sprite'
 
 module JakeTheSnake
-  class NewGame
-    def initialize < Sprite
+  class NewGame < Sprite
+    def initialize
     end
   end
 end
