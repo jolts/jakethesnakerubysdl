@@ -49,8 +49,8 @@ module JakeTheSnake
       when 1
         i = 0
         @snake_body.each do |body_part|
-          body_part[:x] = @snake_body[i][:x]
-          body_part[:y] = @snake_body[i][:y]
+          body_part[:x] = @snake_body[body_part][:x]
+          body_part[:y] = @snake_body[body_part][:y]
           i += 1
         end
         @snake_body[0][:y] -= 16
