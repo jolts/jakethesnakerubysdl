@@ -46,7 +46,6 @@ module JakeTheSnake
       when 368
         puts Colorize.new("cyan").colorize("Jake The Snake is exiting...")
         SDL.quit
-        puts Colorize.new("green").colorize("Exited succesfully.")
       end
     end
 

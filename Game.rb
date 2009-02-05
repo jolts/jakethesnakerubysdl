@@ -24,9 +24,8 @@ module JakeTheSnake
 
     def start_game
       SDL.init(SDL::INIT_VIDEO)
-      running = true
 
-      while running
+      while true
         next_tick = SDL.get_ticks.to_i + @tick_interval.to_i
         
         while event = SDL::Event.poll
