@@ -16,19 +16,26 @@ module JakeTheSnake
       if key == SDL::Key::UP
         if @snake.direction != 3
           @snake.direction = 1
+          $stderr.puts Util.new("yellow").colorize("KeyUp")+" pressed."
         end
       elsif key == SDL::Key::RIGHT
         if @snake.direction != 4
           @snake.direction = 2
+          $stderr.puts Util.new("yellow").colorize("KeyRight")+" pressed."
         end
       elsif key == SDL::Key::DOWN
         if @snake.direction != 1
           @snake.direction = 3
+          $stderr.puts Util.new("yellow").colorize("KeyDown")+" pressed."
         end
       elsif key == SDL::Key::LEFT
         if @snake.direction != 2
           @snake.direction = 4
+          $stderr.puts Util.new("yellow").colorize("KeyLeft")+" pressed."
         end
+      elsif key == SDL::Key::Q
+        $game.state = Menu.new
+        $stderr.puts Util.new("yellow").colorize("Q_Q")+" pressed."
       end
     end
 
