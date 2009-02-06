@@ -6,64 +6,37 @@ require 'lib/util'
 
 module JakeTheSnake
   class Menu < Sprite
-    attr_accessor :apple_x, :apple_y
+    attr_accessor :apple_x, :apple_y, :choice
     def initialize
       self.apple_x = 168
       self.apple_y = 176
+      self.choice = 1
     end
 
     def key_pressed(key)
-      $stderr.puts "Currently in: %s" % Util.new("red").colorize("Menu.key_pressed()")
-      case key
-      when SDL::Key::DOWN
-        if @apple_y < 368
-          @apple_y += 64
-        end
-        $stderr.puts Util.new("green").colorize("KeyDown")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
-      when SDL::Key::UP
-        if @apple_y > 176
-          @apple_y -= 64
-        end
-        $stderr.puts Util.new("green").colorize("KeyUp")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
-      when SDL::Key::RETURN
+      if key == SDL::Key::DOWN && @choice < 4
+        @choice += 1
+        @apple_y += 64
+      elsif key == SDL::Key::UP && @choice > 1
+        @choice -= 1
+        @apple_y -= 64
+      elsif key == SDL::Key::RETURN
         handle_state
-        $stderr.puts Util.new("green").colorize("Return")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
-      when SDL::Key::S
-        $stderr.puts Util.new("cyan").colorize("Starting New Singleplayer Game...")
-        $game.state = NewGame.new
-      when SDL::Key::M
-        $stderr.puts Util.new("cyan").colorize("Starting New Multiplayer Game...")
-        $game.state = MultiPlayer.new
-      when SDL::Key::H
-        $stderr.puts Util.new("cyan").colorize("Loading Highscores...")
-        $game.state = HighScore.new
-      when SDL::Key::Q
-        $stderr.puts Util.new("cyan").colorize("Jake The Snake is exiting...")
-        SDL.quit
-      when SDL::Key::E
-        SDL.Quit
       end
     end
 
     def clock_tick
-      $stderr.puts "Currently in: %s" % Util.new("red").colorize("Menu.clock_tick()")
     end
 
     def handle_state
-      $stderr.puts "Currently in: %s" % Util.new("red").colorize("Menu.handle_state()")
-      case self.apple_y 
-      when 176
-        $stderr.puts Util.new("cyan").colorize("Starting New Singleplayer Game...")
+      case @choice
+      when 1
         $game.state = NewGame.new
-      when 240
-        $stderr.puts Util.new("cyan").colorize("Starting New Multiplayer Game...")
-        # TODO
+      when 2
         $game.state = MultiPlayer.new
-      when 304
-        $stderr.puts Util.new("cyan").colorize("Loading Highscores...")
+      when 3
         $game.state = HighScore.new
-      when 368
-        $stderr.puts Util.new("cyan").colorize("Jake The Snake is exiting...")
+      when 4
         SDL.quit
       end
     end
