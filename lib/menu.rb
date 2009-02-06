@@ -2,7 +2,6 @@
 require 'lib/sprite'
 require 'lib/new_game'
 require 'lib/high_score'
-require 'lib/util'
 
 module JakeTheSnake
   class Menu < Sprite
@@ -42,7 +41,6 @@ module JakeTheSnake
     end
 
     def draw(surface)
-      $stderr.puts "Currently in: %s" % Util.new("red").colorize("Menu.draw()")
       menu_screen = load_image("./img/background_and_wall_menu.bmp")
       apple = load_image("./img/apple_menu.bmp")
       SDL::Surface.blit(menu_screen, 0, 0, 0, 0, surface, 0, 0)
