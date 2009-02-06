@@ -38,10 +38,11 @@ module JakeTheSnake
     def clock_tick
       @snake.move(@snake.direction)
       
-      if @snake.parts_to_add 
-        @snake.add_parts(1)
-        @snake.parts_to_add -= 1
-      end
+      # Code which wont be used yet
+      #if @snake.parts_to_add 
+      #  @snake.add_parts(1)
+      #  @snake.parts_to_add -= 1
+      #end
     end
 
     def check_collisions
