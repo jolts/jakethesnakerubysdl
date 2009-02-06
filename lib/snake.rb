@@ -75,7 +75,7 @@ module JakeTheSnake
 
     def remove_parts(parts)
       parts.times do
-        @snake_body.pop
+        @snake_body.delete(-1)
       end
     end
   end
