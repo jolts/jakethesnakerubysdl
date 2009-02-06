@@ -38,7 +38,7 @@ module JakeTheSnake
             snake_surface = load_image("./img/player_rainbow.bmp")
           end
         end
-        SDL::Surface.blit(snake_surface, 0, 0, 0, 0, surface, body_part[:x], body_part[:y])
+        SDL::Surface.blit(snake_surface, 0, 0, surface.w, surface.h, surface, body_part[:x], body_part[:y])
       end
     end
 
