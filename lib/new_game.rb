@@ -41,8 +41,11 @@ module JakeTheSnake
     end
 
     def clock_tick
+      $stderr.puts "Currently in: %s" % Util.new("red").colorize("NewGame.clock_tick()")
       @snake.move(@snake.direction)
       check_collisions
+
+      @snake.add_parts(1)
 
       #if @snake.parts_to_add
       #  @snake.add_parts(1)
