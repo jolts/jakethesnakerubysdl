@@ -31,12 +31,12 @@ module JakeTheSnake
       @snake_body.each do |body_part|
         if body_part[:head]
           snake_surface = load_image("./img/player1_head.bmp")
-        end
-        
-        unless @rainbow
-          snake_surface = load_image("./img/player_body.bmp")
         else
-          snake_surface = load_image("./img/player_rainbow.bmp")
+          unless @rainbow
+            snake_surface = load_image("./img/player_body.bmp")
+          else
+            snake_surface = load_image("./img/player_rainbow.bmp")
+          end
         end
         SDL::Surface.blit(snake_surface, 0, 0, 0, 0, surface, body_part[:x], body_part[:y])
       end
