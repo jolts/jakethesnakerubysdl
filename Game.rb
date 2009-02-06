@@ -18,7 +18,7 @@ module JakeTheSnake
       @random_width = rand(448)
       @running = true
       @state = Menu.new
-      @tick_interval = SDL.delay(50)
+      @tick_interval = SDL.delay(1)
       @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
     end
 
@@ -34,16 +34,17 @@ module JakeTheSnake
             @state.key_pressed(event.sym)
           when SDL::Event::Quit
             self.running = false
-          end
-          
-          if SDL.get_ticks.to_i < next_tick
-            SDL.delay(next_tick - SDL.get_ticks.to_i)
-          end
+          end          
         end
+
         @state.clock_tick
         @state.draw(@screen)
-        @screen.flip          
+        @screen.flip  
+        if SDL.get_ticks.to_i < next_tick
+          SDL.delay(next_tick - SDL.get_ticks.to_i)
+        end        
       end
+      SDL.quit
     end
   end
 
