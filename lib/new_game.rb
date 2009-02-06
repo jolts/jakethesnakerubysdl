@@ -8,8 +8,8 @@ module JakeTheSnake
     attr_reader :snake
     def initialize
       @snake = Snake.new
-      @finished = false
       @direction = 2 
+      $finished = false
     end
 
     def key_pressed(key)
