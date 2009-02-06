@@ -8,12 +8,11 @@ module JakeTheSnake
     end
 
     def load_image(filename)
-      loaded_image = SDL::Surface.load_bmp(filename)
+      SDL::Surface.load_bmp(filename)
       #if loaded_image
       #  optimized_image = loaded_image.display_format
       #end
       #optimized_image
-      loaded_image
     end
 
     def draw(surface)
