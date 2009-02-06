@@ -16,7 +16,7 @@ module JakeTheSnake
       @full_screen = full_screen
       @random_height = rand(608)
       @random_width = rand(448)
-      @running = true
+      $running = true
       @state = Menu.new
       @tick_interval = 50
       @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
@@ -25,7 +25,7 @@ module JakeTheSnake
     def start_game
       SDL.init(SDL::INIT_VIDEO)
 
-      while @running
+      while $running
         next_tick = SDL.get_ticks.to_i + @tick_interval.to_i
         
         while event = SDL::Event.poll

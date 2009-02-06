@@ -52,9 +52,9 @@ module JakeTheSnake
       green_background = load_image("./img/bg.bmp")
       SDL::Surface.blit(green_background, 16, 16, 608, 448, surface, 16, 16)
       @snake.draw(surface)
-      finished = false
+      $finished = false
       
-      if finished
+      if $finished
         SDL.delay(2000)
         high_score(@p1points)
         $game.state = HighScore.new
