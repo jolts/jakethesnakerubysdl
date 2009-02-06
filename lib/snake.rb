@@ -23,11 +23,12 @@ module JakeTheSnake
         @snake_part[:y] = @y
         self.snake_body << @snake_part
         self.x -= 16
-        @head = false
+        self.head = false
       end
     end
 
     def draw(surface)
+      i = 1
       self.snake_body.each do |body_part|
         if body_part[:head]
           snake_surface = load_image("./img/player1_head.bmp")
@@ -39,6 +40,7 @@ module JakeTheSnake
           end
         end
         SDL::Surface.blit(snake_surface, 0, 0, surface.w, surface.h, surface, body_part[:x], body_part[:y])
+        i += 1
       end
     end
 

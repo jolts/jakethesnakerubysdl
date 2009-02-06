@@ -36,11 +36,11 @@ module JakeTheSnake
     def clock_tick
       @snake.move(@snake.direction)
       check_collisions
-     
-      if @snake.parts_to_add
-        @snake.add_parts(1)
-        @snake.parts_to_add -= 1
-      end
+      
+      #if @snake.parts_to_add
+      #  @snake.add_parts(1)
+      #  @snake.parts_to_add -= 1
+      #end
     end
 
     def check_collisions
