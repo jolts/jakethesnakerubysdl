@@ -15,28 +15,28 @@ module JakeTheSnake
       $stderr.puts "Currently in: %s" % Util.new("red").colorize("NewGame.key_pressed()")
       case key
       when SDL::Key::UP
-        unless @snake.direction = 3
+        unless @snake.direction == 3
+          $stderr.puts Util.new("green").colorize("KeyUp")+" pressed."
           @snake.direction = 1
-          $stderr.puts Util.new("yellow").colorize("KeyUp")+" pressed."
         end
       when SDL::Key::RIGHT
-        unless @snake.direction = 4
+        unless @snake.direction == 4
+          $stderr.puts Util.new("green").colorize("KeyRight")+" pressed."
           @snake.direction = 2
-          $stderr.puts Util.new("yellow").colorize("KeyRight")+" pressed."
         end
       when SDL::Key::DOWN
-        unless @snake.direction = 1
+        unless @snake.direction == 1
+          $stderr.puts Util.new("green").colorize("KeyDown")+" pressed."
           @snake.direction = 3
-          $stderr.puts Util.new("yellow").colorize("KeyDown")+" pressed."
         end
       when SDL::Key::LEFT
-        unless @snake.direction = 2
+        unless @snake.direction == 2
+          $stderr.puts Util.new("green").colorize("KeyLeft")+" pressed."
           @snake.direction = 4
-          $stderr.puts Util.new("yellow").colorize("KeyLeft")+" pressed."
         end
       when SDL::Key::Q
+        $stderr.puts Util.new("green").colorize("Q_Q")+" pressed."
         $game.state = Menu.new
-        $stderr.puts Util.new("yellow").colorize("Q_Q")+" pressed."
       end
     end
 
@@ -44,10 +44,10 @@ module JakeTheSnake
       @snake.move(@snake.direction)
       check_collisions
 
-      if @snake.parts_to_add
-        @snake.add_parts(1)
-        @snake.parts_to_add -= 1
-      end
+      #if @snake.parts_to_add
+      #  @snake.add_parts(1)
+      #  @snake.parts_to_add -= 1
+      #end
     end
 
     def check_collisions

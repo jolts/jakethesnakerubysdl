@@ -19,15 +19,15 @@ module JakeTheSnake
         if @apple_y < 368
           @apple_y += 64
         end
-        $stderr.puts Util.new("yellow").colorize("KeyDown")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
+        $stderr.puts Util.new("green").colorize("KeyDown")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
       when SDL::Key::UP
         if @apple_y > 176
           @apple_y -= 64
         end
-        $stderr.puts Util.new("yellow").colorize("KeyUp")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
+        $stderr.puts Util.new("green").colorize("KeyUp")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
       when SDL::Key::RETURN
         handle_state
-        $stderr.puts Util.new("yellow").colorize("Return")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
+        $stderr.puts Util.new("green").colorize("Return")+" pressed. Location: "+Util.new("blue").colorize(@apple_y.to_s)
       when SDL::Key::S
         $stderr.puts Util.new("cyan").colorize("Starting New Singleplayer Game...")
         $game.state = NewGame.new
