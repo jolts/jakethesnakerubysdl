@@ -13,7 +13,7 @@ module JakeTheSnake
       @x = 128
       @y = 160
       @head = true
-      @parts_to_add = 0
+      @parts_to_add = 1
       @snake_body = Array.new
       
       @length.times do
