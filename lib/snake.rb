@@ -45,38 +45,21 @@ module JakeTheSnake
     def move(direction) 
       self.direction = direction
 
+      i = @snake_body.length - 1
+      @snake_body.reverse_each do
+        @snake_body[i][:x] = @snake_body[i-1][:x]
+        @snake_body[i][:y] = @snake_body[i-1][:y]
+        i -= 1
+      end
+
       case direction
       when 1
-        i = @snake_body.length - 1
-        @snake_body.reverse_each do
-          @snake_body[i][:x] = @snake_body[i-1][:x]
-          @snake_body[i][:y] = @snake_body[i-1][:y]
-          i -= 1
-        end
         @snake_body[0][:y] -= 16
       when 2 
-        i = @snake_body.length - 1
-        @snake_body.reverse_each do
-          @snake_body[i][:x] = @snake_body[i-1][:x]
-          @snake_body[i][:y] = @snake_body[i-1][:y]
-          i -= 1
-        end
         @snake_body[0][:x] += 16
       when 3 
-        i = @snake_body.length - 1
-        @snake_body.reverse_each do
-          @snake_body[i][:x] = @snake_body[i-1][:x]
-          @snake_body[i][:y] = @snake_body[i-1][:y]
-          i -= 1
-        end
         @snake_body[0][:y] += 16
       when 4
-        i = @snake_body.length - 1
-        @snake_body.reverse_each do 
-          @snake_body[i][:x] = @snake_body[i-1][:x]
-          @snake_body[i][:y] = @snake_body[i-1][:y]
-          i -= 1
-        end
         @snake_body[0][:x] -= 16
       end
     end
