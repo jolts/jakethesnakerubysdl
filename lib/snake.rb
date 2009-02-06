@@ -69,7 +69,7 @@ module JakeTheSnake
         @snake_part[:head] = false
         @snake_part[:x] = @snake_body[-1][:x]
         @snake_part[:y] = @snake_body[-1][:y]
-        @snake_body << @snake_part
+        @snake_body << @snake_part ## == @snake.body.insert(-1, @snake.part)
       end
     end
 
