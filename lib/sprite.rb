@@ -8,7 +8,7 @@ module JakeTheSnake
     end
 
     def load_image(filename)
-      SDL::Surface.load_bmp(filename)
+      SDL::Surface.load_bmp(filename).display_format
       #if loaded_image
       #  optimized_image = loaded_image.display_format
       #end
