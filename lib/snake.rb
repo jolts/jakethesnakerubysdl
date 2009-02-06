@@ -9,7 +9,7 @@ module JakeTheSnake
     def initialize
       @rainbow = false
       @direction = 2
-      @length = 2
+      @length = 4
       @x = 128
       @y = 160
       @head = true
