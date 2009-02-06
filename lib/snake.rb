@@ -23,7 +23,7 @@ module JakeTheSnake
         @snake_part[:y] = @y
         self.snake_body << @snake_part
         self.x -= 16
-        self.head = false
+        @head = false
       end
     end
 
