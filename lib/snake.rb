@@ -57,7 +57,7 @@ module JakeTheSnake
         @snake_body[0][:y] -= 16
       when 2 
         @snake_body[0][:x] += 16
-      when 3 
+      when 3
         @snake_body[0][:y] += 16
       when 4
         @snake_body[0][:x] -= 16
@@ -66,6 +66,7 @@ module JakeTheSnake
 
     def add_parts(parts)
       parts.times do
+        @snake_part = Hash.new
         @snake_part[:head] = false
         @snake_part[:x] = @snake_body[-1][:x]
         @snake_part[:y] = @snake_body[-1][:y]

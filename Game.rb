@@ -35,7 +35,7 @@ module JakeTheSnake
           @state.clock_tick
           @state.draw(@screen)
           @screen.flip          
-
+          
           if SDL.get_ticks.to_i < next_tick
             SDL.delay(next_tick - SDL.get_ticks.to_i)
           end
