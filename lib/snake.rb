@@ -9,11 +9,11 @@ module JakeTheSnake
     def initialize
       @rainbow = false
       @direction = 2
-      @length = 3
+      @length = 2
       @x = 128
       @y = 160
       @head = true
-      @parts_to_add = 3
+      @parts_to_add = 0
       @snake_body = Array.new
       
       @length.times do
