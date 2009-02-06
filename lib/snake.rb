@@ -55,7 +55,7 @@ module JakeTheSnake
     def move(direction) 
       self.direction = direction
 
-      case direction
+      case self.direction
       when 1
         move_head
         self.snake_body[0][:y] -= 16

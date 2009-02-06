@@ -5,9 +5,11 @@ require 'lib/high_score'
 
 module JakeTheSnake
   class NewGame < Sprite
+    attr_reader :snake
     def initialize
       @snake = Snake.new
       @finished = false
+      @direction = 2 
     end
 
     def key_pressed(key)
@@ -35,12 +37,11 @@ module JakeTheSnake
 
     def clock_tick
       @snake.move(@snake.direction)
-      check_collisions
       
-      #if @snake.parts_to_add
-      #  @snake.add_parts(1)
-      #  @snake.parts_to_add -= 1
-      #end
+      if @snake.parts_to_add 
+        @snake.add_parts(1)
+        @snake.parts_to_add -= 1
+      end
     end
 
     def check_collisions
