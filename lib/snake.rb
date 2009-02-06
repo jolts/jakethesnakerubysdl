@@ -28,7 +28,6 @@ module JakeTheSnake
     end
 
     def draw(surface)
-      i = 1
       self.snake_body.each do |body_part|
         if body_part[:head]
           snake_surface = load_image("./img/player1_head.bmp")
@@ -40,28 +39,34 @@ module JakeTheSnake
           end
         end
         SDL::Surface.blit(snake_surface, 0, 0, surface.w, surface.h, surface, body_part[:x], body_part[:y])
-        i += 1
+      end
+    end
+
+    def move_head
+      i = self.snake_body.length - 1
+      
+      self.snake_body.each do
+        self.snake_body[i][:x] = self.snake_body[i-1][:x]
+        self.snake_body[i][:y] = self.snake_body[i-1][:y]
+        i -= 1
       end
     end
 
     def move(direction) 
       self.direction = direction
 
-      i = self.snake_body.length - 1
-      self.snake_body.reverse_each do
-        self.snake_body[i][:x] = self.snake_body[i-1][:x]
-        self.snake_body[i][:y] = self.snake_body[i-1][:y]
-        i -= 1
-      end
-
       case direction
       when 1
+        move_head
         self.snake_body[0][:y] -= 16
       when 2 
+        move_head
         self.snake_body[0][:x] += 16
       when 3
+        move_head
         self.snake_body[0][:y] += 16
       when 4
+        move_head
         self.snake_body[0][:x] -= 16
       end
     end
