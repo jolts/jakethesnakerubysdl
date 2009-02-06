@@ -46,9 +46,9 @@ module JakeTheSnake
       self.direction = direction
 
       i = self.snake_body.length - 1
-      self.snake_body.reverse_each do |body_part|
-        body_part[:x] = self.snake_body[i-1][:x]
-        body_part[:y] = self.snake_body[i-1][:y]
+      self.snake_body.reverse_each do
+        self.snake_body[i][:x] = self.snake_body[i-1][:x]
+        self.snake_body[i][:y] = self.snake_body[i-1][:y]
         i -= 1
       end
 
