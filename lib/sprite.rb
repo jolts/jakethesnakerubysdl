@@ -11,6 +11,8 @@ module JakeTheSnake
     def initialize
     end
 
+    
+
     def load_image(filename)
       if $image_buffer[filename]
         # If file has already been loaded, return
@@ -24,6 +26,10 @@ module JakeTheSnake
     end
 
     def key_pressed(key)
+    end
+
+    def blit(src, dst, dstX, dstY)
+      SDL::Surface.blit(src, 0, 0, 0, 0, dst, dstX, dstY)
     end
   end
 end
