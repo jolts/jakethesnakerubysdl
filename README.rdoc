@@ -1,6 +1,6 @@
-==Jake The Snake
+=Jake The Snake
 
-=Usage:
+Usage:
 
   ruby jake_the_snake.rb
 
