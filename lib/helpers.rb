@@ -1,7 +1,4 @@
 module Helpers
-  def initialize
-  end
-    
   def Helpers.debug(text)
     @time = Time.now.strftime("%T")
     
