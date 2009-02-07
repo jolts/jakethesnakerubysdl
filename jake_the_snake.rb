@@ -8,12 +8,15 @@
 #   * Add/Remove snake_parts gets triggered on events
 
 require 'lib/game_engine'
+require 'lib/helpers'
 
 module JakeTheSnake
+  include Helpers
   begin
+    Helpers.debug("Starting Jake")
     $game = GameEngine.new
     $game.start_game
   ensure
-    $stderr.puts "Thanks for playing Jake The Snake."
+    Helpers.debug("JakeTheSnake exited.")
   end
 end
