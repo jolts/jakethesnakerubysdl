@@ -3,7 +3,8 @@ require 'sdl'
 require 'lib/sprite'
 
 module JakeTheSnake
-  class Snake < Sprite
+  include Sprite
+  class Snake
     attr_accessor :snake_part, :snake_body, :rainbow, :parts_to_add, :direction, :x, :head
 
     def initialize
@@ -29,15 +30,15 @@ module JakeTheSnake
     def draw(surface)
       @snake_body.each do |body_part|
         if body_part[:head]
-          snake_surface = load_image("./img/player1_head.bmp")
+          snake_surface = Sprite.load_image("./img/player1_head.bmp")
         else
           unless @rainbow
-            snake_surface = load_image("./img/player_body.bmp")
+            snake_surface = Sprite.load_image("./img/player_body.bmp")
           else
-            snake_surface = load_image("./img/player_rainbow.bmp")
+            snake_surface = Sprite.load_image("./img/player_rainbow.bmp")
           end
         end
-        blit(snake_surface, surface, body_part[:x], body_part[:y])
+        Sprite.blit(snake_surface, surface, body_part[:x], body_part[:y])
       end
     end
 

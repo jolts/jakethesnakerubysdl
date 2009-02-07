@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
 module JakeTheSnake
-  class HighScore < Sprite
+  class HighScore
+    include Sprite
     def initialize
     end
 

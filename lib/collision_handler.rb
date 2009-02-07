@@ -7,7 +7,7 @@ module JakeTheSnake
 
     def is_collision(snake_body, sprite)
       snake_body.each do |body_part|
-        if body_part[:x] == sprite.x && body_part[:y]
+        if body_part[:x] == sprite.x && body_part[:y] == sprite.y
           true
         else
          false

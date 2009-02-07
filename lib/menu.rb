@@ -4,7 +4,8 @@ require 'lib/new_game'
 require 'lib/high_score'
 
 module JakeTheSnake
-  class Menu < Sprite
+  include Sprite
+  class Menu
     attr_accessor :apple_x, :apple_y, :choice
 
     def initialize
@@ -45,10 +46,10 @@ module JakeTheSnake
     end
 
     def draw(surface)
-      menu_screen = load_image("./img/background_and_wall_menu.bmp")
-      apple = load_image("./img/apple_menu.bmp")
-      blit(menu_screen, surface, 0, 0)
-      blit(apple, surface, @apple_x, @apple_y)
+      menu_screen = Sprite.load_image("./img/background_and_wall_menu.bmp")
+      apple = Sprite.load_image("./img/apple_menu.bmp")
+      Sprite.blit(menu_screen, surface, 0, 0)
+      Sprite.blit(apple, surface, @apple_x, @apple_y)
     end
   end
 end
