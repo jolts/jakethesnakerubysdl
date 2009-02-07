@@ -32,19 +32,27 @@ module JakeTheSnake
         end
       when SDL::Key::Q
         $game.state = Menu.new
+      when SDL::Key::A
+        @snake.add_parts(1)
+      when SDL::Key::D
+        @snake.remove_parts(1)
       end
     end
 
     def clock_tick
       @snake.move(@snake.direction)
+      snake_head = Array.new
       
+      @snake.snake_body.each do |body_part|
+        snake_head = body_part if body_part[:head]
+      end
+
       # Code which wont be used yet
       #if @snake.parts_to_add 
       #  @snake.add_parts(1)
       #  @snake.parts_to_add -= 1
-      #end
     end
-
+    
     def check_collisions
     end
     

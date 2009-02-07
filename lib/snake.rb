@@ -73,6 +73,7 @@ module JakeTheSnake
 
     def add_parts(parts)
       parts.times do
+        @snake_part = Hash.new
         @snake_part[:head] = false
         @snake_part[:x] = self.snake_body[-1][:x]
         @snake_part[:y] = self.snake_body[-1][:y]
