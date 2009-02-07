@@ -49,7 +49,7 @@ module JakeTheSnake
   end
 
   begin
-    $game = Game.new(640, 480, false)
+    $game = Game.new
     $game.start_game
   ensure
   end
