@@ -37,6 +37,7 @@ module JakeTheSnake
       when 3
         $game.state = HighScore.new
       when 4
+        $stderr.puts "Jake The Snake is exiting."
         $running = false
       end
     end
