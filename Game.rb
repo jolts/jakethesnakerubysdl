@@ -19,7 +19,7 @@ module JakeTheSnake
       $running = true
       @state = state
       @tick_interval = 100
-      @screen = SDL::Screen.open(@height,@width , 32, SDL::SWSURFACE)
+      @screen = SDL::Screen.open(@height, @width, 32, SDL::SWSURFACE)
     end
 
     def start_game
