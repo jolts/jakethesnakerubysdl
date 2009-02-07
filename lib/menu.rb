@@ -33,10 +33,11 @@ module JakeTheSnake
       when 1
         $game.state = NewGame.new
       when 2
-        $stderr.puts "MultiPlayer is disabled for now."
-        $running = false
+        $stderr.puts "MultiPlayer is not available yet."
+        #$running = false
       when 3
-        $game.state = HighScore.new
+        $stderr.puts "HighScore not available yet."
+        #$game.state = HighScore.new
       when 4
         $stderr.puts "Jake The Snake is exiting."
         $running = false
