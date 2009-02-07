@@ -1,0 +1,7 @@
+==Jake The Snake
+
+=Usage:
+
+  ruby jake_the_snake.rb
+
+And have fun!
