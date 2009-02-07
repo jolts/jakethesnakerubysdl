@@ -55,7 +55,7 @@ module JakeTheSnake
     
     def check_collisions
     end
-    
+
     def draw(surface)
       green_background = load_image("./img/bg.bmp")
       SDL::Surface.blit(green_background, 16, 16, 608, 448, surface, 16, 16)

@@ -6,6 +6,7 @@ require 'lib/high_score'
 module JakeTheSnake
   class Menu < Sprite
     attr_accessor :apple_x, :apple_y, :choice
+
     def initialize
       self.apple_x = 168
       self.apple_y = 176
