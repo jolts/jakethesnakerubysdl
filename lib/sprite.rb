@@ -2,8 +2,6 @@
 require 'sdl'
 
 module Sprite
-  
-  # Keeps track of already loaded images
   $image_buffer = Hash.new    
     
   def Sprite.is_free(x, y, sprites)
@@ -18,7 +16,6 @@ module Sprite
 
   def Sprite.load_image(filename)
     if $image_buffer[filename]
-      # If file has already been loaded, return
       return $image_buffer[filename]
     end
     loaded_image = SDL::Surface.load_bmp(filename).display_format

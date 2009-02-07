@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
 require 'lib/sprite'
+require 'lib/helpers'
 
 module JakeTheSnake
   include Sprite
+  include Helpers
+
   class Apple
     attr_accessor :x, :y, :apple_tick
     def initialize(x=0, y=0)
@@ -13,6 +16,7 @@ module JakeTheSnake
     end
 
     def draw(surface, apples)
+      Helpers.debug("In Apple.draw")
       apples.each do |apple|
         Sprite.blit(@apple_surface, surface, apple.x, apple.y)
       end

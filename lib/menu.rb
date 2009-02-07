@@ -2,9 +2,11 @@
 require 'lib/sprite'
 require 'lib/new_game'
 require 'lib/high_score'
+require 'lib/helpers'
 
 module JakeTheSnake
   include Sprite
+  include Helpers
   class Menu
     attr_accessor :apple_x, :apple_y, :choice
 
@@ -34,18 +36,19 @@ module JakeTheSnake
       when 1
         $game.state = NewGame.new
       when 2
-        $stderr.puts "MultiPlayer is not available yet."
+        Helpers.debug("MultiPlayer is not available yet.")
         #$running = false
       when 3
-        $stderr.puts "HighScore not available yet."
+        Helpers.debug("HighScore not available yet.")
         #$game.state = HighScore.new
       when 4
-        $stderr.puts "Jake The Snake is exiting."
+        Helpers.debug("Jake The Snake is exiting.")
         $running = false
       end
     end
 
     def draw(surface)
+      Helpers.debug("In Menu.draw")
       menu_screen = Sprite.load_image("./img/background_and_wall_menu.bmp")
       apple = Sprite.load_image("./img/apple_menu.bmp")
       Sprite.blit(menu_screen, surface, 0, 0)

@@ -4,9 +4,12 @@ require 'lib/snake'
 require 'lib/high_score'
 require 'lib/apple'
 require 'lib/collision_handler'
+require 'lib/helpers'
 
 module JakeTheSnake
   include Sprite
+  include Helpers
+
   class NewGame
     attr_reader :snake
 
@@ -65,7 +68,7 @@ module JakeTheSnake
     
     def check_collisions
       @apples.each do |apple|
-        if @collision_handler.is_collision(@snake.snake_body, apple)
+        if @collision_handler.is_obstacles_collision(@snake.snake_body, apple)
           # Increment points and add one part
           #@snake.add_parts(1)
           #@apple.move
@@ -73,6 +76,7 @@ module JakeTheSnake
       end
 
       def draw(surface)
+        Helpers.debug("In NewGame.draw")
         green_background = Sprite.load_image("./img/bg.bmp")
         Sprite.blit(green_background, surface, 16, 16)
         @snake.draw(surface)
