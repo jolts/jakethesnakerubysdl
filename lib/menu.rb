@@ -8,9 +8,9 @@ module JakeTheSnake
     attr_accessor :apple_x, :apple_y, :choice
 
     def initialize
-      self.apple_x = 168
-      self.apple_y = 176
-      self.choice = 1
+      @apple_x = 168
+      @apple_y = 176
+      @choice = 1
     end
 
     def key_pressed(key)
@@ -21,7 +21,7 @@ module JakeTheSnake
         @choice -= 1
         @apple_y -= 64
       elsif key == SDL::Key::RETURN
-        handle_state
+        handle_state()
       end
     end
 

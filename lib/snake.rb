@@ -21,14 +21,14 @@ module JakeTheSnake
         @snake_part[:head] = @head
         @snake_part[:x] = @x
         @snake_part[:y] = @y
-        self.snake_body << @snake_part
-        self.x -= 16
-        self.head = false
+        @snake_body << @snake_part
+        @x -= 16
+        @head = false
       end
     end
 
     def draw(surface)
-      self.snake_body.each do |body_part|
+      @snake_body.each do |body_part|
         if body_part[:head]
           snake_surface = load_image("./img/player1_head.bmp")
         else
@@ -43,31 +43,31 @@ module JakeTheSnake
     end
 
     def move_head
-      i = self.snake_body.length - 1
+      i = @snake_body.length - 1
       
       until i == 0
-        @snake_body[i][:x] = snake_body[i-1][:x]
-        @snake_body[i][:y] = snake_body[i-1][:y]
+        @snake_body[i][:x] = @snake_body[i-1][:x]
+        @snake_body[i][:y] = @snake_body[i-1][:y]
         i -= 1
       end
     end
 
     def move(direction) 
-      self.direction = direction
+      @direction = direction
 
-      case self.direction
+      case @direction
       when 1
         move_head
-        self.snake_body[0][:y] -= 16
+        @snake_body[0][:y] -= 16
       when 2 
         move_head
-        self.snake_body[0][:x] += 16
+        @snake_body[0][:x] += 16
       when 3
         move_head
-        self.snake_body[0][:y] += 16
+        @snake_body[0][:y] += 16
       when 4
         move_head
-        self.snake_body[0][:x] -= 16
+        @snake_body[0][:x] -= 16
       end
     end
 
@@ -75,9 +75,9 @@ module JakeTheSnake
       parts.times do
         @snake_part = Hash.new
         @snake_part[:head] = false
-        @snake_part[:x] = self.snake_body[-1][:x]
-        @snake_part[:y] = self.snake_body[-1][:y]
-        self.snake_body << @snake_part
+        @snake_part[:x] = @snake_body[-1][:x]
+        @snake_part[:y] = @snake_body[-1][:y]
+        @snake_body << @snake_part
       end
     end
 

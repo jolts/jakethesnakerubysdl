@@ -10,10 +10,9 @@ module JakeTheSnake
     attr_accessor :state
     attr_reader :screen, :random_height, :random_width, :running
 
-    def initialize(height=640, width=480, full_screen=false, state=Menu.new)
+    def initialize(height=640, width=480, state=Menu.new)
       @height = height
       @width = width
-      @full_screen = full_screen
       @random_height = rand(608)
       @random_width = rand(448)
       $running = true
@@ -33,7 +32,7 @@ module JakeTheSnake
           when SDL::Event::KeyDown
             @state.key_pressed(event.sym)
           when SDL::Event::Quit
-            self.running = false
+            $runnng = false
           end
         end
 
