@@ -1,5 +1,12 @@
 =Jake The Snake
 
+Depends:
+
+*rubygems
+*rubysdl (gem install rubysdl)
+*sdl
+
+
 Usage:
 
   ruby jake_the_snake.rb
