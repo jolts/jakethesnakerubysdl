@@ -32,7 +32,8 @@ module JakeTheSnake
       when 1
         $game.state = NewGame.new
       when 2
-        $game.state = MultiPlayer.new
+        $stderr.puts "MultiPlayer is disabled for now."
+        $running = false
       when 3
         $game.state = HighScore.new
       when 4
