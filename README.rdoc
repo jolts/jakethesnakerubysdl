@@ -1,10 +1,11 @@
 =Jake The Snake
 
+
 Depends:
 
-*rubygems
-*rubysdl (gem install rubysdl)
-*sdl
+* rubygems
+* rubysdl (gem install rubysdl)
+* sdl
 
 
 Usage:
