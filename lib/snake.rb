@@ -38,12 +38,13 @@ module JakeTheSnake
             snake_surface = load_image("./img/player_rainbow.bmp")
           end
         end
-        SDL::Surface.blit(snake_surface, 0, 0, surface.w, surface.h, surface, body_part[:x], body_part[:y])
+        blit(snake_surface, surface, body_part[:x], body_part[:y])
       end
     end
 
     def move_head
       i = @snake_body.length - 1
+      
       until i == 0
         @snake_body[i][:x] = @snake_body[i-1][:x]
         @snake_body[i][:y] = @snake_body[i-1][:y]
@@ -81,10 +82,8 @@ module JakeTheSnake
     end
 
     def remove_parts(parts)
-      unless @snake_body.length == 1
-        parts.times do
-          @snake_body.pop
-        end
+      parts.times do
+        @snake_body.pop
       end
     end
   end
