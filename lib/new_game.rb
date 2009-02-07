@@ -42,7 +42,6 @@ module JakeTheSnake
 
     def clock_tick
       @snake.move(@snake.direction)
-      
       # Code which wont be used yet
       #if @snake.parts_to_add 
       #  @snake.add_parts(1)
