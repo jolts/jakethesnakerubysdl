@@ -42,12 +42,7 @@ module JakeTheSnake
 
     def clock_tick
       @snake.move(@snake.direction)
-      snake_head = Array.new
       
-      @snake.snake_body.each do |body_part|
-        snake_head = body_part if body_part[:head]
-      end
-
       # Code which wont be used yet
       #if @snake.parts_to_add 
       #  @snake.add_parts(1)
