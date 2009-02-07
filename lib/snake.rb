@@ -77,13 +77,13 @@ module JakeTheSnake
         @snake_part[:head] = false
         @snake_part[:x] = self.snake_body[-1][:x]
         @snake_part[:y] = self.snake_body[-1][:y]
-        self.snake_body << @snake_part ## == @snake_body.insert(-1, @snake.part)
+        self.snake_body << @snake_part
       end
     end
 
     def remove_parts(parts)
       parts.times do
-        @snake_body.delete(-1)
+        @snake_body.pop
       end
     end
   end
