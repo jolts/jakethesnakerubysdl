@@ -6,6 +6,7 @@ require 'lib/high_score'
 module JakeTheSnake
   class NewGame < Sprite
     attr_reader :snake
+
     def initialize
       @snake = Snake.new
       @direction = 2 
