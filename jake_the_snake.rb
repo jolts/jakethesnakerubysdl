@@ -5,5 +5,7 @@ module JakeTheSnake
   begin
     $game = GameEngine.new
     $game.start_game
+  ensure
+    $stderr.puts "Thanks for playing Jake The Snake."
   end
 end
