@@ -44,7 +44,6 @@ module JakeTheSnake
 
     def move_head
       i = @snake_body.length - 1
-      
       until i == 0
         @snake_body[i][:x] = @snake_body[i-1][:x]
         @snake_body[i][:y] = @snake_body[i-1][:y]

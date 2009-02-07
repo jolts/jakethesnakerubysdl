@@ -26,7 +26,7 @@ module JakeTheSnake
 
       while $running
         next_tick = SDL.get_ticks.to_i + @tick_interval
-        
+
         while event = SDL::Event.poll
           case event
           when SDL::Event::KeyDown
