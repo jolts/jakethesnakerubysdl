@@ -36,7 +36,7 @@ module JakeTheSnake
       when 3
         $game.state = HighScore.new
       when 4
-        SDL.quit
+        $running = false
       end
     end
 
