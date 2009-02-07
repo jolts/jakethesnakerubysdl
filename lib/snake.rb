@@ -9,14 +9,13 @@ module JakeTheSnake
     def initialize
       @rainbow = false
       @direction = 2
-      @length = 4
+      @parts = 4
       @x = 128
       @y = 160
       @head = true
-      @parts_to_add = 1
       @snake_body = Array.new
       
-      @length.times do
+      @parts.times do # For every part
         @snake_part = Hash.new
         @snake_part[:head] = @head
         @snake_part[:x] = @x
@@ -70,8 +69,9 @@ module JakeTheSnake
         @snake_body[0][:x] -= 16
       end
     end
-
+    
     def add_parts(parts)
+      @parts += parts
       parts.times do
         @snake_part = Hash.new
         @snake_part[:head] = false
@@ -83,6 +83,7 @@ module JakeTheSnake
 
     def remove_parts(parts)
       unless @snake_body.length == 1
+        @parts -= parts
         parts.times do
           @snake_body.pop
         end
