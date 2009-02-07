@@ -82,8 +82,10 @@ module JakeTheSnake
     end
 
     def remove_parts(parts)
-      parts.times do
-        @snake_body.pop
+      unless @snake_body.length == 1
+        parts.times do
+          @snake_body.pop
+        end
       end
     end
   end
