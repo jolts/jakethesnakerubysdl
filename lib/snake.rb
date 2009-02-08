@@ -76,6 +76,7 @@ module JakeTheSnake
     end
     
     def add_parts(parts)
+      Helpers::debug("Adding snake parts")
       @parts += parts
       parts.times do
         @snake_part = Hash.new
@@ -87,6 +88,7 @@ module JakeTheSnake
     end
 
     def remove_parts(parts)
+      Helpers::debug("Removing snake parts")
       unless @snake_body.length == 1
         @parts -= parts
         parts.times do
