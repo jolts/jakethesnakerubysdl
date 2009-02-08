@@ -15,7 +15,7 @@ module JakeTheSnake
       @width = width
       $running = true
       @state = Menu.new
-      @tick_interval = 100
+      @tick_interval = 80
       @screen = SDL::Screen.open(@height, @width, 32, SDL::SWSURFACE)
     end
 

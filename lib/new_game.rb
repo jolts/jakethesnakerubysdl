@@ -57,8 +57,8 @@ module JakeTheSnake
     end
     
     def clock_tick
-      check_collisions()      
       @snake.move(@snake.direction)
+      check_collisions()      
       @apples.each do |apple|
         apple.tick_interval += 1
       end
