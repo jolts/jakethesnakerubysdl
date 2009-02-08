@@ -18,13 +18,11 @@ module JakeTheSnake
       end
     end
 
-    def is_sprite_collision(snake_body, sprite)
-      snake_body.each do |body_part|
-        if body_part[:x] == sprite.x and body_part[:y] == sprite.y
-          true
-        end
+    def is_sprite_collision(snake_head, sprite)
+      if snake_head[:x] == sprite.x and_head[:y] == sprite.y
+        return true
       end
-      false
+      return false
     end
 
     def is_self_snake_collision(snake)
