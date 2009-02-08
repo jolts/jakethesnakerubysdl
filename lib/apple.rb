@@ -15,37 +15,38 @@ module JakeTheSnake
       @y = y
     end
 
-    def draw(surface, apples)
+    def draw(surface, apple)
       Helpers.debug("In Apple.draw")
-      apples.each do |apple|
-        Sprite.blit(@apple_surface, surface, apple.x, apple.y)
-      end
+      Sprite.blit(@apple_surface, surface, apple.x, apple.y)
     end
     
-    def move(apples)
-      @apple_tick += 1
-      if @apple_tick == 20
-        apple = apples[-2]
-        apples.pop
-        begin
-          x = rand(608)
-          y = rand(448)
-        end until Sprite.is_free(x, y, apples)
-        apple.x = x
-        apple.y = y
-        apples[0] = apple
-        @apple_tick = 0
+    def move
+      # Moves the apple
+      # Is supposed to remove the last apple 
+      # And change coord of the first one in apples array
+
+      Helpers.debug("In Apple.move")
+      self.apple_tick += 1
+      if @apple_tick == 50
+        #apple = apples[-1]
+        #apples.pop
+        x = rand(608)
+        y = rand(448)
+      end
+      #end until Sprite.is_free(x, y, apples) Not yet fully working
+      self.x = x
+      self.y = y
+      @apple_tick = 0
+    end
+  end
+
+  def is_free(x, y)
+    @apples.each do |apple|
+      if apple.x == x && apple.y == y
+        false
+      else
+        true
       end
     end
-
-    def is_free(x, y)
-      @apples.each do |apple|
-        if apple.x == x && apple.y == y
-          false
-        else
-          true
-        end
-      end
-    end      
   end
 end

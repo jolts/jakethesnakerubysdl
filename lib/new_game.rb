@@ -58,21 +58,17 @@ module JakeTheSnake
     
     def clock_tick
       @snake.move(@snake.direction)
-      @apple.move(@apples) 
+      #@apples[-1].move 
       check_collisions
-      # Code which wont be used yet
-      #if @snake.parts_to_add 
-      #  @snake.add_parts(1)
-      #  @snake.parts_to_add -= 1
     end
     
     def check_collisions
-      #@apples.each do |apple|
-      #  if @collision_handler.is_sprite_collision(@snake.snake_body, apple)
-      #   # Increment points and add one part
-      #@snake.add_parts(1)
-      #    apple.move(@apples)
-      #  end
+      @apples.each do |apple|
+        if @collision_handler.is_sprite_collision(@snake.snake_body, apple)
+          Helpers.debug("Collision between Apple and Snake")
+          apple.move
+        end
+      end
     end
 
     def draw(surface)
@@ -80,7 +76,9 @@ module JakeTheSnake
       green_background = Sprite.load_image("./img/bg.bmp")
       Sprite.blit(green_background, surface, 16, 16)
       @snake.draw(surface)
-      @apple.draw(surface, @apples)
+      @apples.each do |apple|
+        apple.draw(surface, apple)
+      end
       $finished = false
       
       if $finished
@@ -91,4 +89,3 @@ module JakeTheSnake
     end
   end
 end
-#end
