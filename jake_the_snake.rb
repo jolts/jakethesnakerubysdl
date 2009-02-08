@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 # TODO:
 #   * Edit menu image to exclude MultiPlayer (won't be having this functionality)
-#   * Add collision detection for snake(self), snake(wall), and other sprites
-#   * Spawn apples, carrots and ghosts
+#   * Add collision detection for snake(self), and other sprites
+#   * Spawn carrots and ghosts
 #   * Track points
 #   * Add HighScores
 #   * Add/Remove snake_parts gets triggered on events
@@ -13,11 +13,11 @@ require 'lib/helpers'
 module JakeTheSnake
   include Helpers
 
-  VERSION = 0.1
+  VERSION = "0.01a"
 
   def self.run
     begin
-      Helpers.debug("Starting Jake "+JakeTheSnake::VERSION.to_s)
+      Helpers.debug("Starting Jake "+JakeTheSnake::VERSION)
       $game = GameEngine.new
       $game.spawn_menu
     ensure
