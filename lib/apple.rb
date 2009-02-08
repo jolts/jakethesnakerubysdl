@@ -7,12 +7,12 @@ module JakeTheSnake
   include Helpers
 
   class Apple
-    attr_accessor :x, :y, :apple_tick
+    attr_accessor :x, :y, :tick_interval
     def initialize(x=0, y=0)
-      @apple_tick = 0
       @apple_surface = Sprite::load_image("./img/apple.bmp")
       @x = x
       @y = y
+      @tick_interval = 0
     end
 
     def draw(surface, apple)

@@ -60,8 +60,16 @@ module JakeTheSnake
     
     def clock_tick
       @snake.move(@snake.direction)
-      @apples[-1].move 
-      check_collisions
+      @apples.each do |apple|
+        apple.tick_interval += 1
+      end
+
+      if @apples[-1].tick_interval == 20
+        @apples[-1].move
+        @apples[-1].tick_interval = 0
+      end
+
+      check_collisions()
     end
     
     def check_collisions
