@@ -49,6 +49,7 @@ module JakeTheSnake
         end
       when SDL::Key::Q
         $game.state = Menu.new
+        $game.start_game
       when SDL::Key::A
         @snake.add_parts(1)
       when SDL::Key::D

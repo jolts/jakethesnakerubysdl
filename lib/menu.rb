@@ -36,6 +36,7 @@ module JakeTheSnake
       when 1
         $game.state = nil
         $game.state = NewGame.new
+        $game.game_loop
       when 2
         Helpers.debug("MultiPlayer is not available yet.")
         #$running = false
@@ -50,8 +51,10 @@ module JakeTheSnake
 
     def draw(surface)
       Helpers.debug("In Menu.draw")
-      menu_screen = Sprite.load_image("./img/background_and_wall_menu.bmp")
-      apple = Sprite.load_image("./img/apple_menu.bmp")
+      menu_image = "./img/background_and_wall_menu.bmp"
+      apple_image = "./img/apple_menu.bmp"
+      menu_screen = Sprite.load_image(menu_image)
+      apple = Sprite.load_image(apple_image)
       Sprite.blit(menu_screen, surface, 0, 0) 
       Sprite.blit(apple, surface, @apple_x, @apple_y)
     end
