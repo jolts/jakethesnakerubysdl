@@ -39,14 +39,4 @@ module JakeTheSnake
       @apple_tick = 0
     end
   end
-
-  def is_free(x, y)
-    @apples.each do |apple|
-      if apple.x == x && apple.y == y
-        false
-      else
-        true
-      end
-    end
-  end
 end
