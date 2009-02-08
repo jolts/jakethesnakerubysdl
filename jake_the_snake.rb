@@ -16,7 +16,7 @@ module JakeTheSnake
     begin
       Helpers::debug("Starting Jake "+JakeTheSnake::Version)
       $game = GameEngine.new
-      $game.spawn_menu
+      $game.init
     ensure
       Helpers::debug("JakeTheSnake exited.")
     end

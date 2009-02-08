@@ -18,7 +18,7 @@ module JakeTheSnake
       @screen = SDL::Screen.open(@height, @width, 32, SDL::SWSURFACE)
     end
 
-    def spawn_menu
+    def init
       while $running
         next_tick = SDL.get_ticks.to_i + @tick_interval
 
