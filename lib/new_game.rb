@@ -51,8 +51,6 @@ module JakeTheSnake
       when SDL::Key::Q
         $game.state = Menu.new
         $game.spawn_menu
-      when SDL::Key::A
-        @snake.add_parts(1)
       when SDL::Key::D
         @snake.remove_parts(1)
       end
@@ -80,6 +78,7 @@ module JakeTheSnake
           @p1points += 5
           apple.move
           apple.draw($game.screen, apple)
+          @snake.add_parts(1)
         end
       end
       
