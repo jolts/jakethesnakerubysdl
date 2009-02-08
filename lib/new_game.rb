@@ -60,7 +60,7 @@ module JakeTheSnake
     
     def clock_tick
       @snake.move(@snake.direction)
-      #@apples[-1].move 
+      @apples[-1].move 
       check_collisions
     end
     
@@ -70,6 +70,7 @@ module JakeTheSnake
           Helpers::debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
           @p1points += 5
           apple.move
+          apple.draw($game.screen, apple)
         end
       end
       
