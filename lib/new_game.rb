@@ -134,6 +134,10 @@ module JakeTheSnake
       @snake.draw(surface)
       @apples.each do |apple|
         apple.draw(surface, apple)
+
+        @carrots.each do |carrot|
+          carrot.draw(surface, carrot)
+        end
       end
     end
   end
