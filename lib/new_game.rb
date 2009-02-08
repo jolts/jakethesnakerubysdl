@@ -16,8 +16,9 @@ module JakeTheSnake
 
     def initialize
       @snake = Snake.new
+      @highscore = HighScore.new
       @direction = 2 
-      @p1points = 0
+      @points = 0
       @collision_handler = CollisionHandler.new
       $finished = false
       @apple = Apple.new
@@ -93,7 +94,7 @@ module JakeTheSnake
       @apples.each do |apple|
         if @collision_handler.is_fruit_collision(@snake.snake_body[0], apple)
           Helpers::debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
-          @p1points += 5
+          @points += 5
           apple.move
           apple.draw($game.screen, apple)
           @snake.add_parts(1)
@@ -103,7 +104,7 @@ module JakeTheSnake
       @carrots.each do |carrot|
         if @collision_handler.is_fruit_collision(@snake.snake_body[0], carrot)
           Helpers.debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
-          @p1points -= 10
+          @points -= 10
           carrot.move
           carrot.draw($game.screen, carrot)
           @snake.remove_parts(@snake.parts / 3)
@@ -121,10 +122,14 @@ module JakeTheSnake
       end
 
       if $finished
+        puts 'finished'
         SDL.delay(2000)
-        $game.state = Menu.new
-        #high_score(@p1points)
+        #$game.state = Menu.new
+        #high_score(@points)
         #$game.state = HighScore.new
+        @highscore.write(@points)
+        @highscore.present
+        $game.state = Menu.new
       end
     end
 
