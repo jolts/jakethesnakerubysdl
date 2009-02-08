@@ -5,7 +5,7 @@ module JakeTheSnake
   module Sprite
     $image_buffer = Hash.new    
     
-    def Sprite.is_free(x, y, sprites)
+    def self.is_free(x, y, sprites)
       sprites.each do |sprite|
         if sprite.x == x && sprite.y == y
           false
@@ -14,7 +14,7 @@ module JakeTheSnake
       true
     end
 
-    def Sprite.load_image(filename)
+    def self.load_image(filename)
       if $image_buffer[filename]
         return $image_buffer[filename]
       end
@@ -22,13 +22,13 @@ module JakeTheSnake
       $image_buffer[filename] = loaded_image
     end
 
-    def Sprite.draw(surface)
+    def self.draw(surface)
     end
 
-    def Sprite.key_pressed(key)
+    def self.key_pressed(key)
     end
 
-    def Sprite.blit(src, dst, dstX, dstY)
+    def self.blit(src, dst, dstX, dstY)
       SDL::Surface.blit(src, 0, 0, 0, 0, dst, dstX, dstY)
     end
   end

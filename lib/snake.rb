@@ -34,15 +34,15 @@ module JakeTheSnake
       Helpers::debug("In Snake.draw")
       @snake_body.each do |body_part|
         if body_part[:head]
-          snake_surface = Sprite.load_image("./img/player1_head.bmp")
+          snake_surface = Sprite::load_image("./img/player1_head.bmp")
         else
           unless @rainbow
-            snake_surface = Sprite.load_image("./img/player_body.bmp")
+            snake_surface = Sprite::load_image("./img/player_body.bmp")
           else
-            snake_surface = Sprite.load_image("./img/player_rainbow.bmp")
+            snake_surface = Sprite::load_image("./img/player_rainbow.bmp")
           end
         end
-        Sprite.blit(snake_surface, surface, body_part[:x], body_part[:y])
+        Sprite::blit(snake_surface, surface, body_part[:x], body_part[:y])
       end
     end
 

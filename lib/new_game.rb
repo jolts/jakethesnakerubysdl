@@ -89,8 +89,8 @@ module JakeTheSnake
 
     def draw(surface)
       Helpers::debug("In NewGame.draw")
-      green_background = Sprite.load_image("./img/bg.bmp")
-      Sprite.blit(green_background, surface, 16, 16)
+      green_background = Sprite::load_image("./img/bg.bmp")
+      Sprite::blit(green_background, surface, 16, 16)
       @snake.draw(surface)
       @apples.each do |apple|
         apple.draw(surface, apple)

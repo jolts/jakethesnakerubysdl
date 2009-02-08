@@ -10,14 +10,14 @@ module JakeTheSnake
     attr_accessor :x, :y, :apple_tick
     def initialize(x=0, y=0)
       @apple_tick = 0
-      @apple_surface = Sprite.load_image("./img/apple.bmp")
+      @apple_surface = Sprite::load_image("./img/apple.bmp")
       @x = x
       @y = y
     end
 
     def draw(surface, apple)
       Helpers::debug("In Apple.draw")
-      Sprite.blit(@apple_surface, surface, apple.x, apple.y)
+      Sprite::blit(@apple_surface, surface, apple.x, apple.y)
     end
     
     def move
