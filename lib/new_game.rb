@@ -27,9 +27,6 @@ module JakeTheSnake
         apple = Apple.new(x, y)
         @apples << apple
       end
-
-      # FIXME: Need to obtain wall boundaries somehow...
-      @wall = { :x => 16, :y => 16, :w => 608, :h => 448}
     end
 
     def key_pressed(key)
@@ -74,7 +71,7 @@ module JakeTheSnake
         end
       end
       
-      if @collision_handler.is_wall_collision(@snake.snake_body, @wall)
+      if @collision_handler.is_wall_collision(@snake.snake_body)
         Helpers.debug("Collision between Snake and Wall")
         $finished = true
       elsif @collision_handler.is_self_snake_collision(@snake.snake_body)
