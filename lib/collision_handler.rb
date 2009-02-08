@@ -7,7 +7,7 @@ module JakeTheSnake
     include Sprite
 
     def initialize
-      @wall = { :x => 16, :y => 16, :w => 608, :h => 448}
+      @wall = { :x => 16, :y => 16, :w => 608, :h => 448 }
     end
 
     def is_wall_collision(snake_head)
