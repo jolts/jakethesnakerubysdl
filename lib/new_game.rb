@@ -57,15 +57,8 @@ module JakeTheSnake
     end
     
     def clock_tick
-      snake_thread1 = Thread.new do 
-        @snake.move(@snake.direction)
-      end
-      collision_thread1 = Thread.new do
-        check_collisions()
-      end
-      
-      snake_thread1.join
-      collision_thread1.join
+      @snake.move(@snake.direction)
+      check_collisions()
       
       @apples.each do |apple|
         apple.tick_interval += 1
@@ -75,8 +68,6 @@ module JakeTheSnake
         @apples[-1].move
         @apples[-1].tick_interval = 0
       end
-
-      
     end
     
     def check_collisions
