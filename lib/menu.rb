@@ -17,7 +17,7 @@ module JakeTheSnake
     end
 
     def key_pressed(key)
-      if key == SDL::Key::DOWN && @choice < 4
+      if key == SDL::Key::DOWN && @choice < 3
         @choice += 1
         @apple_y += 64
       elsif key == SDL::Key::UP && @choice > 1
@@ -36,12 +36,9 @@ module JakeTheSnake
       when 1
         $game.state = NewGame.new
       when 2
-        Helpers::debug("MultiPlayer is not available yet.")
-        #$running = false
-      when 3
         Helpers::debug("HighScore not available yet.")
         #$game.state = HighScore.new
-      when 4
+      when 3
         Helpers::debug("Jake The Snake is exiting.")
         $running = false
       end
