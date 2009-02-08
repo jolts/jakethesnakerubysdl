@@ -29,7 +29,7 @@ module JakeTheSnake
       end
 
       # FIXME: Need to obtain wall boundaries somehow...
-      @wall = { :x => 608, :y => 448 }
+      @wall = { :x => 16, :y => 16, :w => 608, :h => 448}
     end
 
     def key_pressed(key)
