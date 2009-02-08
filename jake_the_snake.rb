@@ -1,17 +1,11 @@
 #!/usr/bin/env ruby
-# TODO:
-#   * Spawn carrots and ghosts
-#   * Track points
-#   * Add HighScores
-#   * Add/Remove snake_parts gets triggered on events
-
 require 'lib/game_engine'
 require 'lib/helpers'
 
 module JakeTheSnake
   Authors = "Jolts <johan@sharpcode.se>, Gigamo <gigamo@gmail.com>"
   License = "GPL, http://www.gnu.org/copyleft/gpl.html"
-  Version = "0.01a"
+  Version = "1.0"
   Info    = "http://github.com/jolts/jakethesnakerubysdl/"
 
   Verbose = false
