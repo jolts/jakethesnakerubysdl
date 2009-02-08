@@ -67,8 +67,6 @@ module JakeTheSnake
       when SDL::Key::Q
         $game.state = Menu.new
         $game.spawn_menu
-      when SDL::Key::D
-        @snake.remove_parts(1)
       end
     end
     
@@ -85,8 +83,11 @@ module JakeTheSnake
       end
 
       @ghost.tick_interval += 1
-      @ghost.move(@snake.snake_body[0])
-      
+
+      if @ghost.tick_interval == 5
+        @ghost.move(@snake.snake_body[0])
+      end
+
       if @apples[-1].tick_interval == 20
         @apples[-1].move
         @apples[-1].tick_interval = 0

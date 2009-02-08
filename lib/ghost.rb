@@ -21,19 +21,16 @@ module JakeTheSnake
     end
 
     def move(snake_head)
-      @tick_interval += 1
-      if @tick_interval == 5
-        if snake_head[:x] < @x
-          @x -= 16
-        elsif snake_head[:x] > @x
-          @x += 16
-        end
-        
-        if snake_head[:y] < @y
-          @y -= 16
-        elsif snake_head[:y] > @y
-          @y += 16
-        end
+      if snake_head[:x] < @x
+        @x -= 16
+      elsif snake_head[:x] > @x
+        @x += 16
+      end
+      
+      if snake_head[:y] < @y
+        @y -= 16
+      elsif snake_head[:y] > @y
+        @y += 16
       end
       @tick_interval = 0
     end
