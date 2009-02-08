@@ -25,13 +25,24 @@ module JakeTheSnake
     end
 
     def is_self_snake_collision(snake)
-      snake = Array.new(snake[1..-1])
-      snake.each do |sp|
-        if snake[0][:x] == sp[:x] and snake[0][:y] == sp[:y]
+      i = snake.length
+      snake_part = snake[i]
+      until i == 1
+        j = i - 1 unless i == 0
+        snake_part2 = snake[j]
+        i -= 1
+        if snake_part2[:x] == snake[0][:x] and snake_part2[:y] == snake[0][:y]
           return true
         end
       end
       return false
+      #  snake = Array.new(snake[1..-1])
+      #  snake.each do |sp|
+      #    if snake[0][:x] == sp[:x] and snake[0][:y] == sp[:y]
+      #      return true
+      #   end
+      # end
+      #return false
     end
   end
 end
