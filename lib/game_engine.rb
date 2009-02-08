@@ -7,14 +7,12 @@ require 'lib/high_score'
 module JakeTheSnake
   class GameEngine
     attr_accessor :state
-    attr_reader :screen, :random_height, :random_width, :running
+    attr_reader :screen, :running
 
     def initialize(height=640, width=480, state=nil)
       SDL.init(SDL::INIT_VIDEO) 
       @height = height
       @width = width
-      @random_height = rand(608)
-      @random_width = rand(448)
       $running = true
       @state = Menu.new
       @tick_interval = 100
