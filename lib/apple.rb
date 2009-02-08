@@ -20,17 +20,12 @@ module JakeTheSnake
     end
     
     def move
-      self.apple_tick += 1
-      if @apple_tick == 50
-        #apple = apples[-1]
-        #apples.pop
-        x = rand(38) * 16 + 16 
-        y = rand(28) * 16 + 16
-      end
-      #end until Sprite.is_free(x, y, apples) Not yet fully working
-      self.x = x
-      self.y = y
-      @apple_tick = 0
+      self.x = rand(38) * 16 + 16 
+      self.y = rand(28) * 16 + 16
     end
+    #end until Sprite.is_free(x, y, apples) Not yet fully working
+    #self.x = x
+    #self.y = y
+    #@apple_tick = 0
   end
 end

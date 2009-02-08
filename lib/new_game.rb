@@ -69,7 +69,7 @@ module JakeTheSnake
         if @collision_handler.is_sprite_collision(@snake.snake_body[-1], apple)
           Helpers::debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
           @p1points += 5
-          #apple.move Not working yet
+          apple.move
         end
       end
       
