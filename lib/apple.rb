@@ -30,8 +30,8 @@ module JakeTheSnake
       if @apple_tick == 50
         #apple = apples[-1]
         #apples.pop
-        x = rand(608)
-        y = rand(448)
+        x = rand(608).to_i % 38 * 16 + 16 
+        y = rand(448).to_i % 38 * 16 + 16
       end
       #end until Sprite.is_free(x, y, apples) Not yet fully working
       self.x = x
