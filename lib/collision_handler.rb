@@ -24,6 +24,10 @@ module JakeTheSnake
       return false
     end
 
+    def is_ghost_collision(snake, ghost)
+      return false
+    end
+
     def is_self_snake_collision(snake)
       i = snake.length
       until i == 1 # Until we reach the part after head
