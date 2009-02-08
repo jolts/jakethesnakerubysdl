@@ -4,6 +4,7 @@ require 'lib/snake'
 require 'lib/high_score'
 require 'lib/apple'
 require 'lib/collision_handler'
+require 'lib/carrot'
 require 'lib/helpers'
 
 module JakeTheSnake
@@ -20,13 +21,22 @@ module JakeTheSnake
       @collision_handler = CollisionHandler.new
       $finished = false
       @apple = Apple.new
-
+      @carrot = Carrot.new
+      @carrots = Array.new
       @apples = Array.new
+      
       10.times do
-        x = rand(38).to_i * 16 + 16
-        y = rand(28).to_i * 16 + 16
+        x = rand(38) * 16 + 16
+        y = rand(28) * 16 + 16
         apple = Apple.new(x, y)
         @apples << apple
+      end
+
+      25.times do
+        x = rand(38) * 16 + 16
+        y = rand(28) * 16 + 16
+        carrot = Carrot.new(x, y)
+        @carrots << carrot
       end
     end
 
@@ -64,9 +74,18 @@ module JakeTheSnake
         apple.tick_interval += 1
       end
 
+      @carrots.each do |carrot|
+        carrot.tick_interval += 1
+      end
+
       if @apples[-1].tick_interval == 20
         @apples[-1].move
         @apples[-1].tick_interval = 0
+      end
+
+      if @carrots[-1].tick_interval == 20
+        @carrots[-1].move
+        @carrots[-1].tick_interval = 0
       end
     end
 
@@ -81,6 +100,16 @@ module JakeTheSnake
         end
       end
 
+      @carrots.each do |carrot|
+        if @collision_handler.is_fruit_collision(@snake.snake_body[0], carrot)
+          Helpers.debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
+          @p1points -= 10
+          carrot.move
+          carrot.draw($game.screen, carrot)
+          @snake.remove_parts(@snake.parts / 3)
+        end
+      end
+      
       if @collision_handler.is_wall_collision(@snake.snake_body)
         Helpers::debug("Collision between Snake and Wall")
         Helpers::debug("Going back to menu...")

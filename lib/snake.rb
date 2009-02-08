@@ -8,7 +8,7 @@ module JakeTheSnake
   include Helpers
 
   class Snake
-    attr_accessor :snake_part, :snake_body, :rainbow, :parts_to_add, :direction, :x, :head
+    attr_accessor :snake_part, :snake_body, :rainbow, :parts_to_add, :direction, :x, :head, :parts
 
     def initialize
       @rainbow = false
