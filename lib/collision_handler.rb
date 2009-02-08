@@ -12,10 +12,9 @@ module JakeTheSnake
 
     def is_wall_collision(snake_head)
       if snake_head[0][:x] < @wall[:x] or snake_head[0][:y] < @wall[:y] or snake_head[0][:x] + 16 > @wall[:x] + @wall[:w] or snake_head[0][:y] + 16 > @wall[:y] + @wall[:h]
-        true
-      else
-        false
+        return true
       end
+      return false
     end
 
     def is_fruit_collision(snake_head, fruit)
