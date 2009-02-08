@@ -13,6 +13,7 @@ module JakeTheSnake
     end
 
     def self.score(points)
+      unless points > 0: points = 0 end
       $stdout.puts "\nYou scored #{points} points!"
       
       $score_time = Time.now.strftime("%d/%m/%Y, %T")
