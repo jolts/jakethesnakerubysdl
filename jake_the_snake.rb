@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 # TODO:
-#   * Edit menu image to exclude MultiPlayer (won't be having this functionality)
-#   * Add collision detection for snake(self), and other sprites
 #   * Spawn carrots and ghosts
 #   * Track points
 #   * Add HighScores
