@@ -34,9 +34,7 @@ module JakeTheSnake
     def handle_state
       case @choice
       when 1
-        $game.state = nil
         $game.state = NewGame.new
-        $game.game_loop
       when 2
         Helpers.debug("MultiPlayer is not available yet.")
         #$running = false

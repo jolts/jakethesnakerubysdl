@@ -77,11 +77,16 @@ module JakeTheSnake
       if @collision_handler.is_wall_collision(@snake.snake_body, @wall)
         Helpers.debug("Collision between Snake and Wall")
         $finished = true
-        $game.state = Menu.new
-        $game.start_game
       elsif @collision_handler.is_self_snake_collision(@snake.snake_body)
         Helpers.debug("Collision between self")
         $finished = true
+      end
+
+      if $finished
+        SDL.delay(2000)
+        $game.state = Menu.new
+        #high_score(@p1points)
+        #$game.state = HighScore.new
       end
     end
 
@@ -92,13 +97,6 @@ module JakeTheSnake
       @snake.draw(surface)
       @apples.each do |apple|
         apple.draw(surface, apple)
-      end
-      $finished = false
-      
-      if $finished
-        SDL.delay(2000)
-        high_score(@p1points)
-        $game.state = HighScore.new
       end
     end
   end
