@@ -16,7 +16,7 @@ module JakeTheSnake
     end
 
     def draw(surface, apple)
-      Helpers.debug("In Apple.draw")
+      Helpers::debug("In Apple.draw")
       Sprite.blit(@apple_surface, surface, apple.x, apple.y)
     end
     
@@ -25,7 +25,7 @@ module JakeTheSnake
       # Is supposed to remove the last apple 
       # And change coord of the first one in apples array
 
-      Helpers.debug("In Apple.move")
+      Helpers::debug("In Apple.move")
       self.apple_tick += 1
       if @apple_tick == 50
         #apple = apples[-1]

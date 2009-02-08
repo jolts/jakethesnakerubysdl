@@ -66,16 +66,16 @@ module JakeTheSnake
     def check_collisions
       @apples.each do |apple|
         if @collision_handler.is_sprite_collision(@snake.snake_body, apple)
-          Helpers.debug("Collision between Apple and Snake")
+          Helpers::debug("Collision between Apple and Snake")
           apple.move
         end
       end
       
       if @collision_handler.is_wall_collision(@snake.snake_body)
-        Helpers.debug("Collision between Snake and Wall")
+        Helpers::debug("Collision between Snake and Wall")
         $finished = true
       elsif @collision_handler.is_self_snake_collision(@snake.snake_body)
-        Helpers.debug("Collision between self")
+        Helpers::debug("Collision between self")
         $finished = true
       end
 
@@ -88,7 +88,7 @@ module JakeTheSnake
     end
 
     def draw(surface)
-      Helpers.debug("In NewGame.draw")
+      Helpers::debug("In NewGame.draw")
       green_background = Sprite.load_image("./img/bg.bmp")
       Sprite.blit(green_background, surface, 16, 16)
       @snake.draw(surface)

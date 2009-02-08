@@ -18,11 +18,11 @@ module JakeTheSnake
 
   def self.run
     begin
-      Helpers.debug("Starting Jake "+JakeTheSnake::VERSION)
+      Helpers::debug("Starting Jake "+JakeTheSnake::VERSION)
       $game = GameEngine.new
       $game.spawn_menu
     ensure
-      Helpers.debug("JakeTheSnake exited.")
+      Helpers::debug("JakeTheSnake exited.")
     end
   end
 end

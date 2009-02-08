@@ -36,19 +36,19 @@ module JakeTheSnake
       when 1
         $game.state = NewGame.new
       when 2
-        Helpers.debug("MultiPlayer is not available yet.")
+        Helpers::debug("MultiPlayer is not available yet.")
         #$running = false
       when 3
-        Helpers.debug("HighScore not available yet.")
+        Helpers::debug("HighScore not available yet.")
         #$game.state = HighScore.new
       when 4
-        Helpers.debug("Jake The Snake is exiting.")
+        Helpers::debug("Jake The Snake is exiting.")
         $running = false
       end
     end
 
     def draw(surface)
-      Helpers.debug("In Menu.draw")
+      Helpers::debug("In Menu.draw")
       menu_image = "./img/background_and_wall_menu.bmp"
       apple_image = "./img/apple_menu.bmp"
       menu_screen = Sprite.load_image(menu_image)

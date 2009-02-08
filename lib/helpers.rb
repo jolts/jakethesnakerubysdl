@@ -1,6 +1,6 @@
 module JakeTheSnake
   module Helpers
-    def Helpers.debug(text)
+    def self.debug(text)
       @time = Time.now.strftime("%T")
     
       @logfile = File.new("./log.txt", "a")
