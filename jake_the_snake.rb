@@ -13,9 +13,11 @@ require 'lib/helpers'
 module JakeTheSnake
   include Helpers
 
+  VERSION = 0.1
+
   def self.run
     begin
-      Helpers.debug("Starting Jake")
+      Helpers.debug("Starting Jake "+JakeTheSnake::VERSION.to_s)
       $game = GameEngine.new
       $game.start_game
     ensure
