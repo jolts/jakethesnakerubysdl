@@ -11,18 +11,18 @@ require 'lib/game_engine'
 require 'lib/helpers'
 
 module JakeTheSnake
-  AUTHORS = "Jolts <johan@sharpcode.se>, Gigamo <gigamo@gmail.com>"
-  LICENSE = "GPL, http://www.gnu.org/copyleft/gpl.html"
-  VERSION = "0.01a"
-  INFO    = "http://github.com/jolts/jakethesnakerubysdl/"
+  Authors = "Jolts <johan@sharpcode.se>, Gigamo <gigamo@gmail.com>"
+  License = "GPL, http://www.gnu.org/copyleft/gpl.html"
+  Version = "0.01a"
+  Info    = "http://github.com/jolts/jakethesnakerubysdl/"
 
-  VERBOSE = true
+  Verbose = true
 
   include Helpers
 
   def self.run
     begin
-      Helpers::debug("Starting Jake "+JakeTheSnake::VERSION)
+      Helpers::debug("Starting Jake "+JakeTheSnake::Version)
       $game = GameEngine.new
       $game.spawn_menu
     ensure
