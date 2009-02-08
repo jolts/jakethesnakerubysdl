@@ -115,6 +115,9 @@ module JakeTheSnake
         if @collision_handler.is_collision(@snake.snake_body[0], carrot)
           Helpers.debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
           @points -= 10
+          if @snake.parts <= 2
+            $finished = true
+          end
           carrot.move
           carrot.draw($game.screen, carrot)
           @snake.remove_parts(@snake.parts / 3)
@@ -124,6 +127,9 @@ module JakeTheSnake
       if @collision_handler.is_ghost_collision(@snake.snake_body, @ghost)
         Helpers.debug("Collision between Ghost and Snake")
         @points -= 50
+        if @snake.parts <= 2  
+          $finished = true
+        end
         @ghost.respawn
         @snake.remove_parts(@snake.parts / 2)
       end

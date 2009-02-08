@@ -25,6 +25,11 @@ module JakeTheSnake
     end
 
     def is_ghost_collision(snake, ghost)
+      snake.each do |body_part|
+        if body_part[:x] == ghost.x and body_part[:y] == ghost.y
+          return true
+        end
+      end
       return false
     end
 
