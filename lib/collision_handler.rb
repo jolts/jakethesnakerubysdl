@@ -18,8 +18,8 @@ module JakeTheSnake
       end
     end
 
-    def is_sprite_collision(snake_head, sprite)
-      if snake_head[:x] == sprite.x and snake_head[:y] == sprite.y
+    def is_apple_collision(snake_head, apple)
+      if snake_head[:x] == apple.x and snake_head[:y] == apple.y
         return true
       end
       return false

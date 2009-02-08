@@ -72,7 +72,7 @@ module JakeTheSnake
     
     def check_collisions
       @apples.each do |apple|
-        if @collision_handler.is_sprite_collision(@snake.snake_body[0], apple)
+        if @collision_handler.is_apple_collision(@snake.snake_body[0], apple)
           Helpers::debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
           @p1points += 5
           apple.move
