@@ -12,11 +12,16 @@ require 'lib/helpers'
 
 module JakeTheSnake
   include Helpers
-  begin
-    Helpers.debug("Starting Jake")
-    $game = GameEngine.new
-    $game.start_game
-  ensure
-    Helpers.debug("JakeTheSnake exited.")
+
+  def self.run
+    begin
+      Helpers.debug("Starting Jake")
+      $game = GameEngine.new
+      $game.start_game
+    ensure
+      Helpers.debug("JakeTheSnake exited.")
+    end
   end
 end
+
+JakeTheSnake::run if $0 == __FILE__
