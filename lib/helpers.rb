@@ -15,6 +15,11 @@ module JakeTheSnake
     def self.score(points)
       $stdout.puts "|-- Score: --|"
       $stdout.puts "#{points}"
+      
+      $score_time = Time.now.strftime("%d/%m/%Y, %T")
+      $score_file = File.open("./highscore.txt", "a")
+      $score_file.write("" << "You scored #{points} points at #{$score_time}\r\n")
+      $score_file.close
     end
   end
 end

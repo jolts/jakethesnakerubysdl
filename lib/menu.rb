@@ -35,8 +35,7 @@ module JakeTheSnake
       when 1
         $game.state = NewGame.new
       when 2
-        Helpers::debug("HighScore not available yet.")
-        #$game.state = HighScore.new
+        puts IO.read("./highscore.txt")
       when 3
         Helpers::debug("Jake The Snake is exiting.")
         $running = false
