@@ -21,15 +21,10 @@ module JakeTheSnake
       @screen = SDL::Screen.open(@height, @width, 32, SDL::SWSURFACE)
     end
 
-    def update_screen
-      @state.clock_tick
-      @state.draw(@screen)
-      @screen.flip
-    end
-
-    def game_loop
+    def spawn_menu
       while $running
         next_tick = SDL.get_ticks.to_i + @tick_interval
+
         while event = SDL::Event.poll
           case event
           when SDL::Event::KeyDown
@@ -39,28 +34,14 @@ module JakeTheSnake
           end
         end
 
-        update_screen()
+        @state.clock_tick
+        @state.draw(@screen)
+        @screen.flip
         if SDL.get_ticks.to_i < next_tick
           SDL.delay(next_tick - SDL.get_ticks.to_i)
         end
       end
       $running = false
-    end
-
-    def start_game
-      update_screen()
-      while $running
-        event = SDL::Event.poll
-        case event
-        when SDL::Event::KeyDown
-          @state.key_pressed(event.sym)
-          @state.clock_tick
-          @state.draw(@screen) 
-          @screen.flip
-        when SDL::Event::Quit
-          $running = false
-        end
-      end
     end
   end
 end
