@@ -7,7 +7,7 @@ module JakeTheSnake
       @logfile.write("[#{@time}] #{text}\r\n")
       @logfile.close
 
-      if DEBUG
+      if JakeTheSnake::DEBUG
         $stderr.puts "[#{@time}] #{text}"
       end
     end

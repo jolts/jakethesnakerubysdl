@@ -12,7 +12,7 @@ require 'lib/helpers'
 
 module JakeTheSnake
   VERSION = "0.01a"
-  DEBUG = false
+  DEBUG = true
   
   include Helpers
 
