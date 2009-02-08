@@ -58,7 +58,7 @@ module JakeTheSnake
     
     def clock_tick
       @snake.move(@snake.direction)
-      @apple.move(@apples)
+      @apple.move(@apples) 
       check_collisions
       # Code which wont be used yet
       #if @snake.parts_to_add 
@@ -67,28 +67,28 @@ module JakeTheSnake
     end
     
     def check_collisions
-      @apples.each do |apple|
-        if @collision_handler.is_obstacles_collision(@snake.snake_body, apple)
-          # Increment points and add one part
-          #@snake.add_parts(1)
-          #@apple.move
-        end
-      end
+      #@apples.each do |apple|
+      #  if @collision_handler.is_sprite_collision(@snake.snake_body, apple)
+      #   # Increment points and add one part
+      #@snake.add_parts(1)
+      #    apple.move(@apples)
+      #  end
+    end
 
-      def draw(surface)
-        Helpers.debug("In NewGame.draw")
-        green_background = Sprite.load_image("./img/bg.bmp")
-        Sprite.blit(green_background, surface, 16, 16)
-        @snake.draw(surface)
-        @apple.draw(surface, @apples)
-        $finished = false
-        
-        if $finished
-          SDL.delay(2000)
-          high_score(@p1points)
-          $game.state = HighScore.new
-        end
+    def draw(surface)
+      Helpers.debug("In NewGame.draw")
+      green_background = Sprite.load_image("./img/bg.bmp")
+      Sprite.blit(green_background, surface, 16, 16)
+      @snake.draw(surface)
+      @apple.draw(surface, @apples)
+      $finished = false
+      
+      if $finished
+        SDL.delay(2000)
+        high_score(@p1points)
+        $game.state = HighScore.new
       end
     end
   end
 end
+#end

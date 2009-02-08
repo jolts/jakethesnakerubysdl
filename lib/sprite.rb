@@ -6,7 +6,7 @@ module Sprite
     
   def Sprite.is_free(x, y, sprites)
     sprites.each do |sprite|
-      if sprite[:x] == x && sprite[:y] == y
+      if sprite.x == x && sprite.y == y
         false
       else
         true

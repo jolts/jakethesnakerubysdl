@@ -25,12 +25,12 @@ module JakeTheSnake
     def move(apples)
       @apple_tick += 1
       if @apple_tick == 20
-        apple = apples[-1]
+        apple = apples[-2]
         apples.pop
         begin
           x = rand(608)
           y = rand(448)
-        end until apple.x == x && apple.y == y
+        end until Sprite.is_free(x, y, apples)
         apple.x = x
         apple.y = y
         apples[0] = apple
