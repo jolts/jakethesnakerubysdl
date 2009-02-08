@@ -120,10 +120,10 @@ module JakeTheSnake
         end
       end
 
-      if @collision_handler.is_collision(@snake.snake_body[0], @ghost)
+      if @collision_handler.is_ghost_collision(@snake.snake_body, @ghost)
         Helpers.debug("Collision between Ghost and Snake")
         @points -= 50
-        @ghost.move(@snake.snake_body[0])
+        @ghost.respawn
         @snake.remove_parts(@snake.parts / 2)
       end
       

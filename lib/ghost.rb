@@ -35,5 +35,10 @@ module JakeTheSnake
       @tick_interval = 0
     end
 
+    def respawn
+      @x = rand(38) * 16 + 16
+      @y = rand(28) * 16 + 16
+    end
+
   end
 end
