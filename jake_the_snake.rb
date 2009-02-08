@@ -11,9 +11,10 @@ require 'lib/game_engine'
 require 'lib/helpers'
 
 module JakeTheSnake
-  include Helpers
-
   VERSION = "0.01a"
+  DEBUG = false
+  
+  include Helpers
 
   def self.run
     begin

@@ -6,8 +6,10 @@ module JakeTheSnake
       @logfile = File.new("./log.txt", "a")
       @logfile.write("[#{@time}] #{text}\r\n")
       @logfile.close
-    
-      $stderr.puts "[#{@time}] #{text}"
+
+      if DEBUG
+        $stderr.puts "[#{@time}] #{text}"
+      end
     end
   end
 end
