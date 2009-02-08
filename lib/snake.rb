@@ -31,7 +31,6 @@ module JakeTheSnake
     end
 
     def draw(surface)
-      Helpers::debug("In Snake.draw")
       @snake_body.each do |body_part|
         if body_part[:head]
           snake_surface = Sprite::load_image("./img/player1_head.bmp")

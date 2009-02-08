@@ -17,7 +17,6 @@ module JakeTheSnake
     end
 
     def draw(surface)
-      Helpers::debug("In HighScore.draw")
     end
   end
 end
