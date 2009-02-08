@@ -17,7 +17,7 @@ module JakeTheSnake
       return false
     end
 
-    def is_fruit_collision(snake_head, fruit)
+    def is_collision(snake_head, fruit)
       if snake_head[:x] == fruit.x and snake_head[:y] == fruit.y
         return true
       end

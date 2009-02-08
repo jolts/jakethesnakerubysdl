@@ -4,6 +4,7 @@ require 'lib/snake'
 require 'lib/apple'
 require 'lib/collision_handler'
 require 'lib/carrot'
+require 'lib/ghost'
 require 'lib/helpers'
 
 module JakeTheSnake
@@ -24,6 +25,12 @@ module JakeTheSnake
       @carrots = Array.new
       @apples = Array.new
       
+      1.times do
+        x = rand(38) * 16 + 16
+        y = rand(28) * 16 + 16
+        @ghost = Ghost.new(x, y)
+      end
+
       10.times do
         x = rand(38) * 16 + 16
         y = rand(28) * 16 + 16
@@ -77,6 +84,9 @@ module JakeTheSnake
         carrot.tick_interval += 1
       end
 
+      @ghost.tick_interval += 1
+      @ghost.move(@snake.snake_body[0])
+      
       if @apples[-1].tick_interval == 20
         @apples[-1].move
         @apples[-1].tick_interval = 0
@@ -90,7 +100,7 @@ module JakeTheSnake
 
     def check_collisions
       @apples.each do |apple|
-        if @collision_handler.is_fruit_collision(@snake.snake_body[0], apple)
+        if @collision_handler.is_collision(@snake.snake_body[0], apple)
           Helpers::debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
           @points += 5
           apple.move
@@ -100,13 +110,20 @@ module JakeTheSnake
       end
 
       @carrots.each do |carrot|
-        if @collision_handler.is_fruit_collision(@snake.snake_body[0], carrot)
+        if @collision_handler.is_collision(@snake.snake_body[0], carrot)
           Helpers.debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
           @points -= 10
           carrot.move
           carrot.draw($game.screen, carrot)
           @snake.remove_parts(@snake.parts / 3)
         end
+      end
+
+      if @collision_handler.is_collision(@snake.snake_body[0], @ghost)
+        Helpers.debug("Collision between Ghost and Snake")
+        @points -= 50
+        @ghost.move(@snake.snake_body[0])
+        @snake.remove_parts(@snake.parts / 2)
       end
       
       if @collision_handler.is_wall_collision(@snake.snake_body)
@@ -132,11 +149,11 @@ module JakeTheSnake
       @snake.draw(surface)
       @apples.each do |apple|
         apple.draw(surface, apple)
-
-        @carrots.each do |carrot|
-          carrot.draw(surface, carrot)
-        end
       end
+      @carrots.each do |carrot|
+        carrot.draw(surface, carrot)
+      end
+      @ghost.draw(surface)
     end
   end
 end
