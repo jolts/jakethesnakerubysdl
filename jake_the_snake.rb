@@ -11,9 +11,13 @@ require 'lib/game_engine'
 require 'lib/helpers'
 
 module JakeTheSnake
+  AUTHORS = "Jolts <johan@sharpcode.se>, Gigamo <gigamo@gmail.com>"
+  LICENSE = "GPL, http://www.gnu.org/copyleft/gpl.html"
   VERSION = "0.01a"
-  DEBUG = true
-  
+  INFO    = "http://github.com/jolts/jakethesnakerubysdl/"
+
+  VERBOSE = true
+
   include Helpers
 
   def self.run
