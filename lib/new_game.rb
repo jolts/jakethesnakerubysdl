@@ -66,11 +66,8 @@ module JakeTheSnake
     
     def check_collisions
       @apples.each do |apple|
-        puts 'Apple x: ' +  apple.x.to_s + 'Apple y: ' + apple.y.to_s
-        puts 'Snake x ' + @snake.snake_body[-1][:x].to_s + 'Snake y:' + @snake.snake_body[-1][:y].to_s
         if @collision_handler.is_sprite_collision(@snake.snake_body[-1], apple)
           Helpers::debug("Collision between Apple and Snake")
-          $finished = true
           @p1points += 5
           #apple.move Not working yet
         end
