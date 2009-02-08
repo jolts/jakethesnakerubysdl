@@ -20,7 +20,7 @@ module JakeTheSnake
       @collision_handler = CollisionHandler.new
       $finished = false
       @apple = Apple.new
-      
+
       @apples = Array.new
       10.times do
         x = rand(38).to_i * 16 + 16
@@ -58,8 +58,8 @@ module JakeTheSnake
     
     def clock_tick
       @snake.move(@snake.direction)
-      check_collisions()
-      
+      check_collisions
+
       @apples.each do |apple|
         apple.tick_interval += 1
       end
@@ -69,10 +69,10 @@ module JakeTheSnake
         @apples[-1].tick_interval = 0
       end
     end
-    
+
     def check_collisions
       @apples.each do |apple|
-        if @collision_handler.is_apple_collision(@snake.snake_body[0], apple)
+        if @collision_handler.is_fruit_collision(@snake.snake_body[0], apple)
           Helpers::debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
           @p1points += 5
           apple.move
@@ -80,7 +80,7 @@ module JakeTheSnake
           @snake.add_parts(1)
         end
       end
-      
+
       if @collision_handler.is_wall_collision(@snake.snake_body)
         Helpers::debug("Collision between Snake and Wall")
         Helpers::debug("Going back to menu...")
