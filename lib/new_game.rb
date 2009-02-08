@@ -22,9 +22,9 @@ module JakeTheSnake
       
       @apples = Array.new
       10.times do
-        x = rand(608)
-        y = rand(448)
-        apple = Apple.new(x, y) unless @apples[-1] == x && @apples[-1] == y
+        x = rand(608).to_i % 38 * 16 + 16
+        y = rand(448).to_i % 28 * 16 + 16
+        apple = Apple.new(x, y)
         @apples << apple
       end
     end

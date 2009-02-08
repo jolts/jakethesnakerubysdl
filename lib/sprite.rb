@@ -9,10 +9,9 @@ module JakeTheSnake
       sprites.each do |sprite|
         if sprite.x == x && sprite.y == y
           false
-        else
-          true
         end
       end
+      true
     end
 
     def Sprite.load_image(filename)
@@ -21,7 +20,7 @@ module JakeTheSnake
       end
       loaded_image = SDL::Surface.load_bmp(filename).display_format
       $image_buffer[filename] = loaded_image
-  end
+    end
 
     def Sprite.draw(surface)
     end
