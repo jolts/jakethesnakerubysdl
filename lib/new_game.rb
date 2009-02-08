@@ -86,6 +86,7 @@ module JakeTheSnake
 
       if @ghost.tick_interval == 5
         @ghost.move(@snake.snake_body[0])
+        @ghost.tick_interval = 0
       end
 
       if @apples[-1].tick_interval == 20
