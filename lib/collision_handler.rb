@@ -18,15 +18,22 @@ module JakeTheSnake
       end
     end
 
-    def is_apple_collision(snake_head, apple)
-      if snake_head[:x] == apple.x and snake_head[:y] == apple.y
+    def is_fruit_collision(snake_head, fruit)
+      if snake_head[:x] == fruit.x and snake_head[:y] == fruit.y
         return true
       end
       return false
     end
 
     def is_self_snake_collision(snake)
-      false
+      snake = Array.new(snake[1..-1])
+      snake.each do |sp|
+        if snake[0][:x] == sp[:x] and snake[0][:y] == sp[:y]
+          return true
+        end
+      end
+      return false
     end
   end
 end
+
