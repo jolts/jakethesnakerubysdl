@@ -11,5 +11,10 @@ module JakeTheSnake
         $stderr.puts "[#{$time}] #{text}"
       end
     end
+
+    def self.score(points)
+      $stdout.puts "|-- Score: --|"
+      $stdout.puts "#{points}"
+    end
   end
 end

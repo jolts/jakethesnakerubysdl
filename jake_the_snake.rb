@@ -14,7 +14,7 @@ module JakeTheSnake
   Version = "0.01a"
   Info    = "http://github.com/jolts/jakethesnakerubysdl/"
 
-  Verbose = true
+  Verbose = false
 
   include Helpers
 

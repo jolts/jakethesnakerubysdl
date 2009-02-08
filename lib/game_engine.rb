@@ -2,7 +2,6 @@
 require 'sdl'
 require 'lib/menu'
 require 'lib/new_game'
-require 'lib/high_score'
 
 module JakeTheSnake
   class GameEngine

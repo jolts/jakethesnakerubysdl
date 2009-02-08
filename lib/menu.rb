@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require 'lib/sprite'
 require 'lib/new_game'
-require 'lib/high_score'
 require 'lib/helpers'
 
 module JakeTheSnake

@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require 'lib/sprite'
 require 'lib/snake'
-require 'lib/high_score'
 require 'lib/apple'
 require 'lib/collision_handler'
 require 'lib/carrot'
@@ -16,7 +15,6 @@ module JakeTheSnake
 
     def initialize
       @snake = Snake.new
-      @highscore = HighScore.new
       @direction = 2 
       @points = 0
       @collision_handler = CollisionHandler.new
@@ -122,13 +120,8 @@ module JakeTheSnake
       end
 
       if $finished
-        puts 'finished'
         SDL.delay(2000)
-        #$game.state = Menu.new
-        #high_score(@points)
-        #$game.state = HighScore.new
-        @highscore.write(@points)
-        @highscore.present
+        Helpers::score(@points)
         $game.state = Menu.new
       end
     end
