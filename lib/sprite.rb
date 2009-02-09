@@ -8,21 +8,21 @@ module JakeTheSnake
     def self.spawn(sprite, n)
       sprites = Array.new
       case sprite
-      when 'apple'
+      when "apple"
         n.times do
           x = rand(38) * 16 + 16
           y = rand(28) * 16 + 16
           apple = yield(x, y)
           sprites << apple
         end
-      when 'ghost'
+      when "ghost"
         n.times do
           x = rand(38) * 16 + 16
           y = rand(28) * 16 + 16
           ghost = yield(x, y)
           return ghost
         end
-      when 'carrot'
+      when "carrot"
         n.times do
           x = rand(38) * 16 + 16
           y = rand(28) * 16 + 16
@@ -36,10 +36,10 @@ module JakeTheSnake
     def self.is_free(x, y, sprites)
       sprites.each do |sprite|
         if sprite.x == x && sprite.y == y
-          false
+          return false
         end
       end
-      true
+      return true
     end
 
     def self.load_image(filename)
