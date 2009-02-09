@@ -17,6 +17,9 @@ module JakeTheSnake
       Helpers::debug("Jake #{JakeTheSnake::Version} started.")
       $game = GameEngine.new
       $game.init
+      raise Exception
+    rescue Exception => exp
+      Helpers::debug("There was an unexpected error. (#{exp.message})")
     ensure
       Helpers::debug("JakeTheSnake exited.")
     end
