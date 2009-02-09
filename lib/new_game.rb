@@ -20,30 +20,9 @@ module JakeTheSnake
       @points = 0
       @collision_handler = CollisionHandler.new
       $finished = false
-      @apple = Apple.new
-      @carrot = Carrot.new
-      @carrots = Array.new
-      @apples = Array.new
-      
-      1.times do
-        x = rand(38) * 16 + 16
-        y = rand(28) * 16 + 16
-        @ghost = Ghost.new(x, y)
-      end
-
-      10.times do
-        x = rand(38) * 16 + 16
-        y = rand(28) * 16 + 16
-        apple = Apple.new(x, y)
-        @apples << apple
-      end
-
-      25.times do
-        x = rand(38) * 16 + 16
-        y = rand(28) * 16 + 16
-        carrot = Carrot.new(x, y)
-        @carrots << carrot
-      end
+      @carrots = Sprite::spawn('carrot', 25) do |x, y| Carrot.new(x, y) end
+      @apples = Sprite::spawn('apple', 10) do |x, y| Apple.new(x, y) end
+      @ghost = Sprite::spawn('ghost', 1) do |x, y| Ghost.new(x, y) end
     end
 
     def key_pressed(key)
@@ -66,7 +45,7 @@ module JakeTheSnake
         end
       when SDL::Key::Q
         $game.state = Menu.new
-        $game.spawn_menu
+        $game.init
       end
     end
     

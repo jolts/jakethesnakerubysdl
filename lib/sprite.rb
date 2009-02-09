@@ -5,6 +5,34 @@ module JakeTheSnake
   module Sprite
     $image_buffer = Hash.new    
     
+    def self.spawn(sprite, n)
+      sprites = Array.new
+      case sprite
+      when 'apple'
+        n.times do
+          x = rand(38) * 16 + 16
+          y = rand(28) * 16 + 16
+          apple = yield(x, y)
+          sprites << apple
+        end
+      when 'ghost'
+        n.times do
+          x = rand(38) * 16 + 16
+          y = rand(28) * 16 + 16
+          ghost = yield(x, y)
+          return ghost
+        end
+      when 'carrot'
+        n.times do
+          x = rand(38) * 16 + 16
+          y = rand(28) * 16 + 16
+          carrot = yield(x, y)
+          sprites << carrot
+        end
+      end
+      sprites
+    end
+    
     def self.is_free(x, y, sprites)
       sprites.each do |sprite|
         if sprite.x == x && sprite.y == y
