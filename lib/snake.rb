@@ -88,11 +88,9 @@ module JakeTheSnake
 
     def remove_parts(parts)
       Helpers::debug("Removing snake parts")
-      unless @snake_body.length == 1
-        @parts -= parts
-        parts.times do
-          @snake_body.pop
-        end
+      @parts -= parts
+      parts.times do
+        @snake_body.pop
       end
     end
   end
