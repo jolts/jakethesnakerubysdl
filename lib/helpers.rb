@@ -7,7 +7,7 @@ module JakeTheSnake
       time = Time.now.strftime("%T")
 
       log = File.new($log_file, "a")
-      log.write("[#{time}] #{text}\r\n")
+      log.write("" << "[#{time}] #{text}\r\n")
       log.close
 
       if JakeTheSnake::Verbose
