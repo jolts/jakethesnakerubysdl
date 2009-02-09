@@ -112,12 +112,14 @@ module JakeTheSnake
         @ghost.respawn
         @snake.remove_parts(@snake.parts / 2)
       end
-      
+
       if @collision_handler.is_wall_collision(@snake.snake_body)
         Helpers::debug("Collision between Snake and Wall")
         Helpers::debug("Going back to menu...")
         $finished = true
-      elsif @collision_handler.is_self_snake_collision(@snake.snake_body)
+      end
+
+      if @collision_handler.is_self_snake_collision(@snake.snake_body)
         Helpers::debug("Collision between self")
         Helpers::debug("Going back to menu...")
         $finished = true
