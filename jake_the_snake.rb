@@ -5,7 +5,7 @@ require 'lib/helpers'
 module JakeTheSnake
   Authors = "Jolts <johan@sharpcode.se>, Gigamo <gigamo@gmail.com>"
   License = "GPL, http://www.gnu.org/copyleft/gpl.html"
-  Version = "1.0.1"
+  Version = "1.0.2"
   Info    = "http://github.com/jolts/jakethesnakerubysdl/"
 
   Verbose = false

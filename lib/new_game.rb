@@ -104,7 +104,7 @@ module JakeTheSnake
       end
 
       if @collision_handler.is_ghost_collision(@snake.snake_body, @ghost)
-        Helpers.debug("Collision between Ghost and Snake")
+        Helpers.debug("Collision between Ghost and Snake at x:#{@ghost.x}/y:#{@ghost.y}")
         @points -= 50
         if @snake.parts <= 2  
           $finished = true
