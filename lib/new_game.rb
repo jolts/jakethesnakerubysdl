@@ -92,7 +92,7 @@ module JakeTheSnake
 
       @carrots.each do |carrot|
         if @collision_handler.is_collision(@snake.snake_body[0], carrot)
-          Helpers.debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
+          Helpers::debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
           @points -= 10
           if @snake.parts <= 2
             $finished = true
@@ -104,7 +104,7 @@ module JakeTheSnake
       end
 
       if @collision_handler.is_ghost_collision(@snake.snake_body, @ghost)
-        Helpers.debug("Collision between Ghost and Snake at x:#{@ghost.x}/y:#{@ghost.y}")
+        Helpers::debug("Collision between Ghost and Snake at x:#{@ghost.x}/y:#{@ghost.y}")
         @points -= 50
         if @snake.parts <= 2  
           $finished = true
