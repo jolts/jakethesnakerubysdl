@@ -14,7 +14,7 @@ module JakeTheSnake
 
   def self.run
     begin
-      Helpers::debug("Starting Jake "+JakeTheSnake::Version)
+      Helpers::debug("Jake #{JakeTheSnake::Version} started.")
       $game = GameEngine.new
       $game.init
     ensure
