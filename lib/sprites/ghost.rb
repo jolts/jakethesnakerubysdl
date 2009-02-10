@@ -1,17 +1,14 @@
 #!/usr/bin/env ruby
-require 'lib/sprite'
-require 'lib/helpers'
+require File.dirname(__FILE__) + '/../sprite'
 
 module JakeTheSnake
+  include Sprite
+
   class Ghost
     attr_accessor :x, :y, :tick_interval
 
-    include Sprite
-    include Helpers
-
     def initialize(x=0, y=0)
-      @x = x
-      @y = y
+      @x, @y = x, y
       @tick_interval = 0
       @ghost_surface = Sprite::load_image("./img/ghost.bmp")
     end
@@ -39,6 +36,5 @@ module JakeTheSnake
       @x = rand(38) * 16 + 16
       @y = rand(28) * 16 + 16
     end
-
   end
 end

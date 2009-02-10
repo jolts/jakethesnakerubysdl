@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 require 'sdl'
-require 'lib/menu'
-require 'lib/new_game'
+
+require File.dirname(__FILE__) + '/menu'
+require File.dirname(__FILE__) + '/new_game'
 
 module JakeTheSnake
   class GameEngine
@@ -10,12 +11,11 @@ module JakeTheSnake
 
     def initialize(height=640, width=480, state=nil)
       SDL.init(SDL::INIT_VIDEO) 
-      @height = height
-      @width = width
-      $running = true
-      @state = Menu.new
+      @height, @width = height, width
       @tick_interval = 80
+      @state = Menu.new
       @screen = SDL::Screen.open(@height, @width, 32, SDL::SWSURFACE)
+      $running = true
     end
 
     def init

@@ -29,7 +29,10 @@ module JakeTheSnake
           carrot = yield(x, y)
           sprites << carrot
         end
+      else
+        $stderr.puts "What's a(n) #{sprite}?"
       end
+
       sprites
     end
     

@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 require 'sdl'
-require 'lib/sprite'
-require 'lib/helpers'
+
+require File.dirname(__FILE__) + '/sprite'
+require File.dirname(__FILE__) + '/helpers'
 
 module JakeTheSnake
   include Sprite
@@ -18,8 +19,8 @@ module JakeTheSnake
       @y = 160
       @head = true
       @snake_body = Array.new
-      
-      @parts.times do # For every part
+
+      @parts.times do
         @snake_part = Hash.new
         @snake_part[:head] = @head
         @snake_part[:x] = @x
@@ -73,7 +74,7 @@ module JakeTheSnake
         @snake_body[0][:x] -= 16
       end
     end
-    
+
     def add_parts(parts)
       Helpers::debug("Adding snake parts")
       @parts += parts

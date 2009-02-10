@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
-require 'lib/sprite'
-require 'lib/apple'
+require File.dirname(__FILE__) + '/sprite'
 
 module JakeTheSnake
-  class CollisionHandler
-    include Sprite
+  include Sprite
 
+  class CollisionHandler
     def initialize
       @wall = { :x => 16, :y => 16, :w => 608, :h => 448 }
     end
@@ -35,11 +34,10 @@ module JakeTheSnake
 
     def is_self_snake_collision(snake)
       i = snake.length
-      until i == 1 # Until we reach the part after head
+      until i == 1
         j = i - 1 unless i == 0
         snake_part = snake[j]
         i -= 1
-        # Check whether part collides with head
         if snake_part[:x] == snake[0][:x] and snake_part[:y] == snake[0][:y]
           return true
         end
@@ -48,4 +46,3 @@ module JakeTheSnake
     end
   end
 end
-

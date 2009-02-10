@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
-require 'lib/sprite'
-require 'lib/snake'
-require 'lib/apple'
-require 'lib/collision_handler'
-require 'lib/carrot'
-require 'lib/ghost'
-require 'lib/helpers'
+require File.dirname(__FILE__) + '/sprite'
+require File.dirname(__FILE__) + '/snake'
+require File.dirname(__FILE__) + '/collision_handler'
+require File.dirname(__FILE__) + '/sprites/apple'
+require File.dirname(__FILE__) + '/sprites/carrot'
+require File.dirname(__FILE__) + '/sprites/ghost'
+require File.dirname(__FILE__) + '/helpers'
 
 module JakeTheSnake
   include Sprite
@@ -48,7 +48,7 @@ module JakeTheSnake
         $game.init
       end
     end
-    
+
     def clock_tick
       @snake.move(@snake.direction)
       check_collisions

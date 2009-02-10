@@ -1,17 +1,15 @@
 #!/usr/bin/env ruby
-require 'lib/sprite'
-require 'lib/helpers'
+require File.dirname(__FILE__) + '/../sprite'
 
 module JakeTheSnake
   include Sprite
-  include Helpers
 
   class Carrot
     attr_accessor :x, :y, :tick_interval
+
     def initialize(x=0, y=0)
       @carrot_surface = Sprite::load_image("./img/carrot.bmp")
-      @x = x
-      @y = y
+      @x, @y = x, y
       @tick_interval = 0
     end
 

@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
-require 'lib/sprite'
-require 'lib/new_game'
-require 'lib/helpers'
+require File.dirname(__FILE__) + '/sprite'
+require File.dirname(__FILE__) + '/new_game'
+require File.dirname(__FILE__) + '/helpers'
 
 module JakeTheSnake
   include Sprite
   include Helpers
+
   class Menu
     attr_accessor :apple_x, :apple_y, :choice
 
