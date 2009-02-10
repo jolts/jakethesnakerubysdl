@@ -45,8 +45,8 @@ module JakeTheSnake
     def draw(surface)
       menu_screen = Sprite::load_image("./img/background_and_wall_menu.bmp")
       apple = Sprite::load_image("./img/apple_menu.bmp")
-      Sprite.blit(menu_screen, surface, 0, 0) 
-      Sprite.blit(apple, surface, @apple_x, @apple_y)
+      Sprite::blit(menu_screen, surface, 0, 0) 
+      Sprite::blit(apple, surface, @apple_x, @apple_y)
     end
   end
 end
