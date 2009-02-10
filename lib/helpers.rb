@@ -1,5 +1,6 @@
 module JakeTheSnake
   module Helpers
+    Verbose = false
     LogFile = "./log.txt"
     ScoreFile = "./highscore.txt"
 
