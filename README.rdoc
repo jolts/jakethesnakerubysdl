@@ -10,6 +10,6 @@ Depends:
 
 Usage:
 
-  ruby jake_the_snake.rb
+  ruby bin/jake_the_snake.rb
 
 And have fun!
