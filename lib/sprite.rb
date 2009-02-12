@@ -3,8 +3,10 @@ require 'sdl'
 
 module JakeTheSnake
   module Sprite
+    extend self
+
     $image_buffer = Hash.new    
-    
+
     def self.spawn(sprite, n)
       sprites = Array.new
       case sprite
@@ -35,7 +37,7 @@ module JakeTheSnake
 
       sprites
     end
-    
+
     def self.is_free(x, y, sprites)
       sprites.each do |sprite|
         if sprite.x == x && sprite.y == y

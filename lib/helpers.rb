@@ -1,5 +1,7 @@
 module JakeTheSnake
   module Helpers
+    extend self
+
     Verbose = false
 
     LogFile = "./log.txt"

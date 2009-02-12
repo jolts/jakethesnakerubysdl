@@ -24,7 +24,7 @@ module JakeTheSnake
         @choice -= 1
         @apple_y -= 64
       elsif key == SDL::Key::RETURN
-        handle_state()
+        handle_state
       end
     end
 
@@ -36,7 +36,7 @@ module JakeTheSnake
       when 1
         $game.state = NewGame.new
       when 2
-        puts "\n"+IO.read(Helpers::ScoreFile)+"\n"
+        puts "\n#{IO.read(Helpers::ScoreFile)}\n"
       when 3
         Helpers::debug("Jake The Snake is exiting.")
         $running = false

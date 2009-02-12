@@ -5,6 +5,7 @@ require File.dirname(__FILE__) + '/sprite'
 require File.dirname(__FILE__) + '/helpers'
 
 module JakeTheSnake
+  include Enumerable
   include Sprite
   include Helpers
 
