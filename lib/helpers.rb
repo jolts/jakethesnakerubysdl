@@ -21,13 +21,14 @@ module JakeTheSnake
 
     def self.score(points)
       unless points > 0: points = 0 end
-
       $stdout.puts "\nYou scored #{points} points!"
 
-      score_time = Time.now.strftime("%d/%m/%Y, %T")
-      score = File.new(ScoreFile, "a")
-      score.write("" << "You scored #{points} points at #{score_time}\r\n")
-      score.close
+      if points > 0
+        score_time = Time.now.strftime("%d/%m/%Y, %T")
+        score = File.new(ScoreFile, "a")
+        score.write("" << "You scored #{points} points at #{score_time}\r\n")
+        score.close
+      end
     end
   end
 end
