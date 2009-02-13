@@ -6,6 +6,8 @@ module JakeTheSnake
   include Sprite
 
   class CollisionHandler
+    attr_accessor :wall
+
     def initialize
       @wall = { :x => 16, :y => 16, :w => 608, :h => 448 }
     end
