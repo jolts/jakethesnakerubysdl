@@ -16,14 +16,14 @@ module JakeTheSnake
       if snake_head[0][:x] < @wall[:x] or snake_head[0][:y] < @wall[:y] or snake_head[0][:x] + 16 > @wall[:x] + @wall[:w] or snake_head[0][:y] + 16 > @wall[:y] + @wall[:h]
         return true
       end
-      return false
+      false
     end
 
     def is_collision(snake_head, fruit)
       if snake_head[:x] == fruit.x and snake_head[:y] == fruit.y
         return true
       end
-      return false
+      false
     end
 
     def is_ghost_collision(snake, ghost)
@@ -32,7 +32,7 @@ module JakeTheSnake
           return true
         end
       end
-      return false
+      false
     end
 
     def is_self_snake_collision(snake)
@@ -45,7 +45,7 @@ module JakeTheSnake
           return true
         end
       end
-      return false
+      false
     end
   end
 end
