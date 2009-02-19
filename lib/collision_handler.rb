@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
+
 require File.dirname(__FILE__) + '/sprite'
 
 module JakeTheSnake
-  include Enumerable
   include Sprite
 
   class CollisionHandler

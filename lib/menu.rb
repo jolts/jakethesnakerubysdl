@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require File.dirname(__FILE__) + '/sprite'
 require File.dirname(__FILE__) + '/new_game'
 require File.dirname(__FILE__) + '/helpers'
@@ -34,11 +35,13 @@ module JakeTheSnake
     def handle_state
       case @choice
       when 1
+        $logger.info('Starting new SinglePlayer game')
         $game.state = NewGame.new
       when 2
-        puts "\n#{IO.read(Helpers::ScoreFile)}\n"
+        $logger.info('Showing HighScores')
+        puts "\n#{IO.read($scorefile)}"
       when 3
-        Helpers::debug("Jake The Snake is exiting.")
+        $logger.info('User is exiting')
         $running = false
       end
     end

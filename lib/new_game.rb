@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require File.dirname(__FILE__) + '/sprite'
 require File.dirname(__FILE__) + '/snake'
 require File.dirname(__FILE__) + '/collision_handler'
@@ -8,7 +9,6 @@ require File.dirname(__FILE__) + '/sprites/ghost'
 require File.dirname(__FILE__) + '/helpers'
 
 module JakeTheSnake
-  include Enumerable
   include Sprite
   include Helpers
 
@@ -83,7 +83,7 @@ module JakeTheSnake
     def check_collisions
       @apples.each do |apple|
         if @collision_handler.is_collision(@snake.snake_body[0], apple)
-          Helpers::debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
+          $logger.debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
           @points += 5
           apple.move
           apple.draw($game.screen, apple)
@@ -93,7 +93,7 @@ module JakeTheSnake
 
       @carrots.each do |carrot|
         if @collision_handler.is_collision(@snake.snake_body[0], carrot)
-          Helpers::debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
+          $logger.debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
           @points -= 10
           if @snake.parts <= 2
             $finished = true
@@ -105,7 +105,7 @@ module JakeTheSnake
       end
 
       if @collision_handler.is_ghost_collision(@snake.snake_body, @ghost)
-        Helpers::debug("Collision between Ghost and Snake at x:#{@ghost.x}/y:#{@ghost.y}")
+        $logger.debug("Collision between Ghost and Snake at x:#{@ghost.x}/y:#{@ghost.y}")
         @points -= 50
         if @snake.parts <= 2  
           $finished = true
@@ -115,14 +115,14 @@ module JakeTheSnake
       end
 
       if @collision_handler.is_wall_collision(@snake.snake_body)
-        Helpers::debug("Collision between Snake and Wall")
-        Helpers::debug("Going back to menu...")
+        $logger.debug("Collision between Snake and Wall")
+        $logger.info("Going back to menu...")
         $finished = true
       end
 
       if @collision_handler.is_self_snake_collision(@snake.snake_body)
-        Helpers::debug("Collision between self")
-        Helpers::debug("Going back to menu...")
+        $logger.debug("Collision between self")
+        $logger.info("Going back to menu...")
         $finished = true
       end
 

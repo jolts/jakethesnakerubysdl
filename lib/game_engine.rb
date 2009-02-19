@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require 'sdl'
 
 require File.dirname(__FILE__) + '/menu'
@@ -38,6 +39,7 @@ module JakeTheSnake
           SDL.delay(next_tick - SDL.get_ticks.to_i)
         end
       end
+
       $running = false
     end
   end

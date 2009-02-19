@@ -3,9 +3,9 @@
 
 Depends:
 
+* sdl
 * rubygems
 * rubysdl (gem install rubysdl)
-* sdl
 
 
 Usage:

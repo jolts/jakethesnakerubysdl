@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
+
 require 'sdl'
 
 require File.dirname(__FILE__) + '/sprite'
 require File.dirname(__FILE__) + '/helpers'
 
 module JakeTheSnake
-  include Enumerable
   include Sprite
   include Helpers
 
@@ -77,7 +77,7 @@ module JakeTheSnake
     end
 
     def add_parts(parts)
-      Helpers::debug("Adding snake parts")
+      $logger.debug("Adding snake parts")
       @parts += parts
       parts.times do
         @snake_part = Hash.new
@@ -89,7 +89,7 @@ module JakeTheSnake
     end
 
     def remove_parts(parts)
-      Helpers::debug("Removing snake parts")
+      $logger.debug("Removing snake parts")
       @parts -= parts
       parts.times do
         @snake_body.pop

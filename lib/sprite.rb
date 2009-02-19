@@ -1,9 +1,13 @@
 #!/usr/bin/env ruby
+
 require 'sdl'
+
+require File.dirname(__FILE__) + '/helpers'
 
 module JakeTheSnake
   module Sprite
     extend self
+    include Helpers
 
     $image_buffer = Hash.new    
 
@@ -32,7 +36,7 @@ module JakeTheSnake
           sprites << carrot
         end
       else
-        $stderr.puts "What's a(n) #{sprite}?"
+        $logger.warn("You're trying to spawn #{sprite}. I don't know #{sprite}.")
       end
 
       sprites
