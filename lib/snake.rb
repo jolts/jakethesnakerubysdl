@@ -10,31 +10,9 @@ module JakeTheSnake
   include Helpers
 
   class Snake
-    attr_accessor :rainbow  
-   
-    def self.body()
-      @body
-    end
-    
-    def self.parts()
-      @parts
-    end
-
-    def self.parts=(parts)
-      @parts = parts
-    end
-
-    def self.direction()
-      @direction
-    end
-    
-    def self.rainbow=(rainbow)
-      @rainbow = rainbow
-    end
-
-    def self.direction=(direction)
-      @direction = direction
-    end
+    sattr_reader :body
+    sattr_writer :rainbow
+    sattr_accessor :parts, :direction
 
     self.rainbow = false
     self.direction = 2

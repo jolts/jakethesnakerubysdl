@@ -2,6 +2,39 @@
 
 require 'logger'
 
+class Module
+  def sattr_reader(*syms)
+    syms.each do |sym|
+      class_eval(<<-EOS, __FILE__, __LINE__)
+        unless defined? @#{sym}
+          @#{sym} = nil
+        end
+        def self.#{sym}
+          @#{sym}
+        end
+      EOS
+    end
+  end
+  
+  def sattr_writer(*syms)
+    syms.each do |sym|
+      class_eval(<<-EOS, __FILE__, __LINE__)
+        unless defined? @#{sym}
+          @#{sym} = nil
+        end
+        def self.#{sym}=(obj)
+          @#{sym} = obj
+        end
+      EOS
+    end
+  end
+  
+  def sattr_accessor(*syms)
+    sattr_reader(*syms)
+    sattr_writer(*syms)
+  end
+end
+
 module JakeTheSnake
   module Helpers
     extend self
