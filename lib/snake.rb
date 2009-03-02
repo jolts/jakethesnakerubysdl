@@ -20,8 +20,8 @@ module JakeTheSnake
     @x = 128
     @y = 160
     @body = Array.new
-    
     @body << {:head => true, :x => @x, :y => @y}
+    @head = body[0]
 
     @parts.times do
       snake_part = {:head => false, :x => @x, :y => @y}
@@ -46,12 +46,11 @@ module JakeTheSnake
 
     def self.move_head
       i = @body.length - 1
-      
-      until i == 0
+      begin 
         @body[i][:x] = @body[i-1][:x]
         @body[i][:y] = @body[i-1][:y]
         i -= 1
-      end
+      end until i == 0
     end
 
     def self.move(direction) 
@@ -60,16 +59,16 @@ module JakeTheSnake
       case @direction
       when 1
         move_head
-        @body[0][:y] -= 16
+        @head[:y] -= 16
       when 2 
         move_head
-        @body[0][:x] += 16
+        @head[:x] += 16
       when 3
         move_head
-        @body[0][:y] += 16
+        @head[:y] += 16
       when 4
         move_head
-        @body[0][:x] -= 16
+        @head[:x] -= 16
       end
     end
 
