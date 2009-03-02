@@ -20,15 +20,15 @@ module JakeTheSnake
     end
 
     def init
-      while $running
+      loop do
         next_tick = SDL.get_ticks.to_i + @tick_interval
-
-        while event = SDL::Event.poll
+        event = SDL::Event.poll
+        while event
           case event
           when SDL::Event::KeyDown
             @state.key_pressed(event.sym)
           when SDL::Event::Quit
-            $running = false
+            SDL.Quit
           end
         end
 
@@ -38,7 +38,7 @@ module JakeTheSnake
         if SDL.get_ticks.to_i < next_tick
           SDL.delay(next_tick - SDL.get_ticks.to_i)
         end
-      end
+      end if $running
 
       $running = false
     end
