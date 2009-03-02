@@ -36,7 +36,7 @@ module JakeTheSnake
           sprites << carrot
         end
       else
-        $logger.warn("You're trying to spawn #{sprite}. I don't know #{sprite}.")
+        Log.warn("You're trying to spawn #{sprite}. I don't know #{sprite}.")
       end
 
       sprites

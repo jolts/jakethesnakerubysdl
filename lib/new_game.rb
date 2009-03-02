@@ -83,7 +83,7 @@ module JakeTheSnake
     def check_collisions
       @apples.each do |apple|
         if @collision_handler.is_collision(@snake.snake_body[0], apple)
-          $logger.debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
+          Log.debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
           @points += 5
           apple.move
           apple.draw($game.screen, apple)
@@ -93,7 +93,7 @@ module JakeTheSnake
 
       @carrots.each do |carrot|
         if @collision_handler.is_collision(@snake.snake_body[0], carrot)
-          $logger.debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
+          Log.debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
           @points -= 10
           if @snake.parts <= 2
             $finished = true
@@ -105,7 +105,7 @@ module JakeTheSnake
       end
 
       if @collision_handler.is_ghost_collision(@snake.snake_body, @ghost)
-        $logger.debug("Collision between Ghost and Snake at x:#{@ghost.x}/y:#{@ghost.y}")
+        Log.debug("Collision between Ghost and Snake at x:#{@ghost.x}/y:#{@ghost.y}")
         @points -= 50
         if @snake.parts <= 2  
           $finished = true
@@ -115,14 +115,14 @@ module JakeTheSnake
       end
 
       if @collision_handler.is_wall_collision(@snake.snake_body)
-        $logger.debug("Collision between Snake and Wall")
-        $logger.info("Going back to menu...")
+        Log.debug("Collision between Snake and Wall")
+        Log.info("Going back to menu...")
         $finished = true
       end
 
       if @collision_handler.is_self_snake_collision(@snake.snake_body)
-        $logger.debug("Collision between self")
-        $logger.info("Going back to menu...")
+        Log.debug("Collision between self")
+        Log.info("Going back to menu...")
         $finished = true
       end
 

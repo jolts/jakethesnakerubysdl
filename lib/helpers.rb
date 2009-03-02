@@ -9,13 +9,12 @@ module JakeTheSnake
     $logfile = "./jake.log"
     $scorefile = "./highscore.txt"
 
-    $logger = Logger.new($logfile)
-    #$logger = Logger.new(STDOUT)
-    $logger.level = Logger::DEBUG
-    $logger.debug('Created logger')
+    Log = Logger.new($logfile)
+    Log.level = Logger::DEBUG
+    Log.debug('Created logger')
 
-    def self.score(points)
-      unless points > 0: points = 0 end
+    def score(points)
+      unless points > 0 then points = 0 end
       $stdout.puts "\nYou scored #{points} points!"
 
       unless points == 0

@@ -77,7 +77,7 @@ module JakeTheSnake
     end
 
     def add_parts(parts)
-      $logger.debug("Adding snake parts")
+      Log.debug("Adding snake parts")
       @parts += parts
       parts.times do
         @snake_part = Hash.new
@@ -89,7 +89,7 @@ module JakeTheSnake
     end
 
     def remove_parts(parts)
-      $logger.debug("Removing snake parts")
+      Log.debug("Removing snake parts")
       @parts -= parts
       parts.times do
         @snake_body.pop

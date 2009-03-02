@@ -35,13 +35,13 @@ module JakeTheSnake
     def handle_state
       case @choice
       when 1
-        $logger.info('Starting new SinglePlayer game')
+        Log.info('Starting new SinglePlayer game')
         $game.state = NewGame.new
       when 2
-        $logger.info('Showing HighScores')
+        Log.info('Showing HighScores')
         $stdout.puts "\n#{IO.read($scorefile)}"
       when 3
-        $logger.info('User is exiting')
+        Log.info('User is exiting')
         $running = false
       end
     end
