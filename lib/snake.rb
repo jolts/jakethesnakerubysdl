@@ -33,18 +33,22 @@ module JakeTheSnake
     end
 
     def draw(surface)
+      threads = []
       @snake_body.each do |body_part|
-        if body_part[:head]
-          snake_surface = Sprite::load_image("./img/player1_head.bmp")
-        else
-          unless @rainbow
-            snake_surface = Sprite::load_image("./img/player_body.bmp")
+        threads << Thread.new do
+          if body_part[:head]
+            snake_surface = Sprite::load_image("./img/player1_head.bmp")
           else
-            snake_surface = Sprite::load_image("./img/player_rainbow.bmp")
+            unless @rainbow
+              snake_surface = Sprite::load_image("./img/player_body.bmp")
+            else
+              snake_surface = Sprite::load_image("./img/player_rainbow.bmp")
+            end
           end
+          Sprite::blit(snake_surface, surface, body_part[:x], body_part[:y])
         end
-        Sprite::blit(snake_surface, surface, body_part[:x], body_part[:y])
       end
+      threads.each { |t| t.join }
     end
 
     def move_head
