@@ -19,17 +19,14 @@ module JakeTheSnake
     self.parts = 4
     @x = 128
     @y = 160
-    @head = true
     @body = Array.new
+    
+    @body << {:head => true, :x => @x, :y => @y}
 
     @parts.times do
-      @snake_part = Hash.new
-      @snake_part[:head] = @head
-      @snake_part[:x] = @x
-      @snake_part[:y] = @y
-      @body << @snake_part
+      snake_part = {:head => false, :x => @x, :y => @y}
+      @body << snake_part
       @x -= 16
-      @head = false
     end
 
     def self.draw(surface)
@@ -80,11 +77,8 @@ module JakeTheSnake
       Log.debug("Adding snake parts")
       @parts += parts
       parts.times do
-        @snake_part = Hash.new
-        @snake_part = {:head => false,
-        :x => @body[-1][:x],
-        :y => @body[-1][:y]}
-        @body << @snake_part
+        snake_part = {:head => false, :x => @body[-1][:x], :y => @body[-1][:y]}
+        @body << snake_part
       end
     end
 
