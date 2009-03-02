@@ -13,15 +13,14 @@ module JakeTheSnake
     def initialize(height=640, width=480, state=nil)
       SDL.init(SDL::INIT_VIDEO) 
       @height, @width = height, width
-      @tick_interval = 80
       @state = Menu.new
       @screen = SDL::Screen.open(@height, @width, 32, SDL::SWSURFACE)
       $running = true
     end
 
-    def init
-      while $running
-        next_tick = SDL.get_ticks.to_i + @tick_interval
+    def init(tick_interval)
+      begin # Start of Loop
+        next_tick = SDL.get_ticks.to_i + tick_interval
 
         while event = SDL::Event.poll
           case event
@@ -38,9 +37,7 @@ module JakeTheSnake
         if SDL.get_ticks.to_i < next_tick
           SDL.delay(next_tick - SDL.get_ticks.to_i)
         end
-      end
-
-      $running = false
+      end while $running # End
     end
   end
 end
