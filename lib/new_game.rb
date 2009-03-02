@@ -134,18 +134,16 @@ module JakeTheSnake
     end
 
     def draw(surface)
-      threads = []
       green_background = Sprite::load_image("./img/bg.bmp")
       Sprite::blit(green_background, surface, 16, 16)
-      threads << Thread.new { @snake.draw(surface) }
+      @snake.draw(surface)
       @apples.each do |apple|
-        threads << Thread.new { apple.draw(surface, apple) }
+        apple.draw(surface, apple)
       end
       @carrots.each do |carrot|
-        threads << Thread.new { carrot.draw(surface, carrot) }
+        carrot.draw(surface, carrot)
       end
-      threads << Thread.new { @ghost.draw(surface) }
-      threads.each { |t| t.join } 
+      @ghost.draw(surface)
     end
   end
 end
