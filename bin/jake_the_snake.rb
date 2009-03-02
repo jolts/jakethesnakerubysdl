@@ -10,5 +10,5 @@ begin
   Log.info('Started Jake')
   trap(:INT) { Log.fatal("Caught #{:INT}, exiting") }
   $game = JakeTheSnake::GameEngine.new
-  $game.init if $0 == __FILE__
+  $game.init(80) if $0 == __FILE__
 end
