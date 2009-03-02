@@ -8,7 +8,7 @@ begin
   Log.debug('Created logger')
 
   Log.info('Started Jake')
-  trap(:INT) { Log.fatal("Caught #{:INT}, exiting") }
+  trap('SIGINT') { Log.fatal("Caught SIGINT, exiting") }
   $game = JakeTheSnake::GameEngine.new
   $game.init if $0 == __FILE__
 end
