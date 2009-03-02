@@ -39,7 +39,7 @@ module JakeTheSnake
         $game.state = NewGame.new
       when 2
         $logger.info('Showing HighScores')
-        $stdout.puts "\n#{IO.read($scorefile)}"
+        puts "\n#{IO.read($scorefile)}"
       when 3
         $logger.info('User is exiting')
         $running = false
