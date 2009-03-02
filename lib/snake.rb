@@ -10,93 +10,103 @@ module JakeTheSnake
   include Helpers
 
   class Snake
-    attr_accessor :snake_part, :snake_body, :rainbow, :parts_to_add, :direction, :x, :head, :parts
-
-    def initialize
-      @rainbow = false
-      @direction = 2
-      @parts = 4
-      @x = 128
-      @y = 160
-      @head = true
-      @snake_body = Array.new
-
-      @parts.times do
-        @snake_part = Hash.new
-        @snake_part[:head] = @head
-        @snake_part[:x] = @x
-        @snake_part[:y] = @y
-        @snake_body << @snake_part
-        @x -= 16
-        @head = false
-      end
+    attr_accessor :rainbow  
+    
+    def self.body()
+      @body
+    end
+    
+    def self.parts()
+      @parts
     end
 
-    def draw(surface)
-      threads = []
-      @snake_body.each do |body_part|
-        threads << Thread.new do
-          if body_part[:head]
-            snake_surface = Sprite::load_image("./img/player1_head.bmp")
+    def self.direction()
+      @direction
+    end
+
+    def self.direction=(direction)
+      @direction = direction
+    end
+
+    @rainbow = false
+    self.direction = 2
+    @parts = 4
+    @x = 128
+    @y = 160
+    @head = true
+    @body = Array.new
+
+    @parts.times do
+      @snake_part = Hash.new
+      @snake_part[:head] = @head
+      @snake_part[:x] = @x
+      @snake_part[:y] = @y
+      @body << @snake_part
+      @x -= 16
+      @head = false
+    end
+
+    def self.draw(surface)
+      @body.each do |body_part|
+        if body_part[:head]
+          snake_surface = Sprite::load_image("./img/player1_head.bmp")
+        else
+          unless @rainbow
+            snake_surface = Sprite::load_image("./img/player_body.bmp")
           else
-            unless @rainbow
-              snake_surface = Sprite::load_image("./img/player_body.bmp")
-            else
-              snake_surface = Sprite::load_image("./img/player_rainbow.bmp")
-            end
+            snake_surface = Sprite::load_image("./img/player_rainbow.bmp")
           end
-          Sprite::blit(snake_surface, surface, body_part[:x], body_part[:y])
         end
+        Sprite::blit(snake_surface, surface, body_part[:x], body_part[:y])
       end
-      threads.each { |t| t.join }
     end
 
-    def move_head
-      i = @snake_body.length - 1
+    def self.move_head
+      i = @body.length - 1
       
       until i == 0
-        @snake_body[i][:x] = @snake_body[i-1][:x]
-        @snake_body[i][:y] = @snake_body[i-1][:y]
+        @body[i][:x] = @body[i-1][:x]
+        @body[i][:y] = @body[i-1][:y]
         i -= 1
       end
     end
 
-    def move(direction) 
+    def self.move(direction) 
       @direction = direction
 
       case @direction
       when 1
         move_head
-        @snake_body[0][:y] -= 16
+        @body[0][:y] -= 16
       when 2 
         move_head
-        @snake_body[0][:x] += 16
+        @body[0][:x] += 16
       when 3
         move_head
-        @snake_body[0][:y] += 16
+        @body[0][:y] += 16
       when 4
         move_head
-        @snake_body[0][:x] -= 16
+        @body[0][:x] -= 16
       end
     end
 
-    def add_parts(parts)
+    def self.add_parts(parts)
       Log.debug("Adding snake parts")
       @parts += parts
       parts.times do
         @snake_part = Hash.new
         @snake_part = {:head => false,
-        :x => @snake_body[-1][:x],
-        :y => @snake_body[-1][:y]}
-        @snake_body << @snake_part
+        :x => @body[-1][:x],
+        :y => @body[-1][:y]}
+        @body << @snake_part
       end
     end
 
-    def remove_parts(parts)
+    def self.remove_parts(parts)
       Log.debug("Removing snake parts")
       @parts -= parts
       parts.times do
-        @snake_body.pop
+        @body.pop
       end
     end
   end

@@ -16,7 +16,6 @@ module JakeTheSnake
     attr_reader :snake
 
     def initialize
-      @snake = Snake.new
       @direction = 2 
       @points = 0
       @collision_handler = CollisionHandler.new
@@ -29,20 +28,20 @@ module JakeTheSnake
     def key_pressed(key)
       case key
       when SDL::Key::UP
-        unless @snake.direction == 3
-          @snake.direction = 1
+        unless Snake.direction == 3
+          Snake.direction = 1
         end
       when SDL::Key::RIGHT
-        unless @snake.direction == 4
-          @snake.direction = 2
+        unless Snake.direction == 4
+          Snake.direction = 2
         end
       when SDL::Key::DOWN
-        unless @snake.direction == 1
-          @snake.direction = 3
+        unless Snake.direction == 1
+          Snake.direction = 3
         end
       when SDL::Key::LEFT
-        unless @snake.direction == 2
-          @snake.direction = 4
+        unless Snake.direction == 2
+          Snake.direction = 4
         end
       when SDL::Key::Q
         $game.state = Menu.new
@@ -51,7 +50,7 @@ module JakeTheSnake
     end
 
     def clock_tick
-      @snake.move(@snake.direction)
+      Snake.move(Snake.direction)
       check_collisions
 
       @apples.each do |apple|
@@ -65,7 +64,7 @@ module JakeTheSnake
       @ghost.tick_interval += 1
 
       if @ghost.tick_interval == 5
-        @ghost.move(@snake.snake_body[0])
+        @ghost.move(Snake.body[0])
         @ghost.tick_interval = 0
       end
 
@@ -82,45 +81,45 @@ module JakeTheSnake
 
     def check_collisions
       @apples.each do |apple|
-        if @collision_handler.is_collision(@snake.snake_body[0], apple)
+        if @collision_handler.is_collision(Snake.body[0], apple)
           Log.debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
           @points += 5
           apple.move
           apple.draw($game.screen, apple)
-          @snake.add_parts(1)
+          Snake.add_parts(1)
         end
       end
 
       @carrots.each do |carrot|
-        if @collision_handler.is_collision(@snake.snake_body[0], carrot)
+        if @collision_handler.is_collision(Snake.body[0], carrot)
           Log.debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
           @points -= 10
-          if @snake.parts <= 2
+          if Snake.parts <= 2
             $finished = true
           end
           carrot.move
           carrot.draw($game.screen, carrot)
-          @snake.remove_parts(@snake.parts / 3)
+          Snake.remove_parts(Snake.parts / 3)
         end
       end
 
-      if @collision_handler.is_ghost_collision(@snake.snake_body, @ghost)
+      if @collision_handler.is_ghost_collision(Snake.body, @ghost)
         Log.debug("Collision between Ghost and Snake at x:#{@ghost.x}/y:#{@ghost.y}")
         @points -= 50
-        if @snake.parts <= 2  
+        if Snake.parts <= 2  
           $finished = true
         end
         @ghost.respawn
-        @snake.remove_parts(@snake.parts / 2)
+        Snake.remove_parts(Snake.parts / 2)
       end
 
-      if @collision_handler.is_wall_collision(@snake.snake_body)
+      if @collision_handler.is_wall_collision(Snake.body)
         Log.debug("Collision between Snake and Wall")
         Log.info("Going back to menu...")
         $finished = true
       end
 
-      if @collision_handler.is_self_snake_collision(@snake.snake_body)
+      if @collision_handler.is_self_snake_collision(Snake.body)
         Log.debug("Collision between self")
         Log.info("Going back to menu...")
         $finished = true
@@ -136,7 +135,7 @@ module JakeTheSnake
     def draw(surface)
       green_background = Sprite::load_image("./img/bg.bmp")
       Sprite::blit(green_background, surface, 16, 16)
-      @snake.draw(surface)
+      Snake.draw(surface)
       @apples.each do |apple|
         apple.draw(surface, apple)
       end
