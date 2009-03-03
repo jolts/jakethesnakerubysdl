@@ -46,7 +46,7 @@ module JakeTheSnake
 
     def self.move_head
       i = @body.length - 1
-      begin 
+      begin
         @body[i][:x] = @body[i-1][:x]
         @body[i][:y] = @body[i-1][:y]
         i -= 1

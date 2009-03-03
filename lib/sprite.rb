@@ -52,9 +52,7 @@ module JakeTheSnake
     end
 
     def self.load_image(filename)
-      if $image_buffer[filename]
-        return $image_buffer[filename]
-      end
+      if $image_buffer[filename] then return $image_buffer[filename] end
       loaded_image = SDL::Surface.load_bmp(filename).display_format
       $image_buffer[filename] = loaded_image
     end

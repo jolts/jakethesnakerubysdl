@@ -81,7 +81,7 @@ module JakeTheSnake
 
     def check_collisions
       @apples.each do |apple|
-        if @collision_handler.is_collision(Snake.body[0], apple)
+        if @collision_handler.is_collision?(Snake.body[0], apple)
           Log.debug("Collision between Apple and Snake at x:#{apple.x}/y:#{apple.y}")
           @points += 5
           apple.move
@@ -91,7 +91,7 @@ module JakeTheSnake
       end
 
       @carrots.each do |carrot|
-        if @collision_handler.is_collision(Snake.body[0], carrot)
+        if @collision_handler.is_collision?(Snake.body[0], carrot)
           Log.debug("Collision between Carrot and Snake at x:#{carrot.x}/y:#{carrot.y}")
           @points -= 10
           if Snake.parts <= 2
@@ -103,7 +103,7 @@ module JakeTheSnake
         end
       end
 
-      if @collision_handler.is_ghost_collision(Snake.body, @ghost)
+      if @collision_handler.is_ghost_collision?(Snake.body, @ghost)
         Log.debug("Collision between Ghost and Snake at x:#{@ghost.x}/y:#{@ghost.y}")
         @points -= 50
         if Snake.parts <= 2  
@@ -113,13 +113,13 @@ module JakeTheSnake
         Snake.remove_parts(Snake.parts / 2)
       end
 
-      if @collision_handler.is_wall_collision(Snake.body)
+      if @collision_handler.is_wall_collision?(Snake.body)
         Log.debug("Collision between Snake and Wall")
         Log.info("Going back to menu...")
         $finished = true
       end
 
-      if @collision_handler.is_self_snake_collision(Snake.body)
+      if @collision_handler.is_self_snake_collision?(Snake.body)
         Log.debug("Collision between self")
         Log.info("Going back to menu...")
         $finished = true

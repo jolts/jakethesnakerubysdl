@@ -2,6 +2,8 @@
 
 require 'logger'
 
+# Create our own getters/setters methods for singleton classes
+# by extending Module
 class Module
   def sattr_reader(*syms)
     syms.each do |sym|
@@ -15,7 +17,7 @@ class Module
       EOS
     end
   end
-  
+
   def sattr_writer(*syms)
     syms.each do |sym|
       class_eval(<<-EOS, __FILE__, __LINE__)
@@ -28,7 +30,7 @@ class Module
       EOS
     end
   end
-  
+
   def sattr_accessor(*syms)
     sattr_reader(*syms)
     sattr_writer(*syms)
