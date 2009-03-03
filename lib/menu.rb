@@ -18,14 +18,16 @@ module JakeTheSnake
     end
 
     def key_pressed(key)
-      if key == SDL::Key::DOWN && @choice < 3
+      if key == SDL::Key::DOWN and @choice < 3
         @choice += 1
         @apple_y += 64
-      elsif key == SDL::Key::UP && @choice > 1
+      elsif key == SDL::Key::UP and @choice > 1
         @choice -= 1
         @apple_y -= 64
       elsif key == SDL::Key::RETURN
         handle_state
+      else
+        Log.warn('Unknown keypress')
       end
     end
 

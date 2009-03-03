@@ -46,6 +46,8 @@ module JakeTheSnake
       when SDL::Key::Q
         $game.state = Menu.new
         $game.init
+      else
+        Log.warn('Unknown keypress')
       end
     end
 
