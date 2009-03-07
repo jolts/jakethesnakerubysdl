@@ -19,7 +19,7 @@ module JakeTheSnake
     end
 
     def init(tick_interval)
-      begin # Start of Loop
+      until not $running
         next_tick = SDL.get_ticks.to_i + tick_interval
 
         while event = SDL::Event.poll
@@ -37,7 +37,7 @@ module JakeTheSnake
         if SDL.get_ticks.to_i < next_tick
           SDL.delay(next_tick - SDL.get_ticks.to_i)
         end
-      end while $running # End
+      end
     end
   end
 end
