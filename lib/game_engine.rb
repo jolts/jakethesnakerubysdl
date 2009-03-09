@@ -19,7 +19,8 @@ module JakeTheSnake
     end
 
     def init(tick_interval)
-      until not $running
+      (0..(1/0.0)).each do
+        break unless $running
         next_tick = SDL.get_ticks.to_i + tick_interval
 
         while event = SDL::Event.poll
